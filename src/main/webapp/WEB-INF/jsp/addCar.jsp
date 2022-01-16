@@ -58,11 +58,8 @@
                     </select>
                     <br/>
                     <br/>
-                    <label for="CarModel">Car Model</label>
+                    <label for="CarModel"><spring:message code="add.label.car_model"/> </label>
                     <textarea class="form-control" id="CarModel" name="carModel"  rows="1"></textarea>
-                    <br/>
-                    <label for="Year"><spring:message code="add.label.year"/></label>
-                    <input name="year" type="number" min="1970" max="2022" step="1" id="Year" value="2000"/>
                     <br/>
                     <label><spring:message code="addCar.label.car_condition"/></label>
                     <select id="condition" name="condition" class="form-control">
@@ -93,6 +90,9 @@
                     <br/>
                     <label for="firstPrice"><spring:message code="addCar.label.initial_price"/></label>
                     <input  type="number" id="firstPrice" name="firstPrice" min="0" >
+                    <br/>
+                    <label for="Year"><spring:message code="addCar.label.year"/></label>
+                    <input name="year" type="number" min="1970" max="2022" step="1" id="Year" value="2000"/>
                     <br/>
                     <br/>
                     <label for="description"><spring:message code="addCar.label.description"/></label>
