@@ -45,8 +45,8 @@
                         <c:when test="${user != null}">
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropDown" data-toggle="dropdown">${user.firstName} ${user.lastName}</a>
                             <div class="dropdown-menu" aria-labelledby="profileDropDown">
-                                <a class="dropdown-item" href="/profile">profile</a>
-                                <a class="dropdown-item" href="/logout">logout</a>
+                                <a class="dropdown-item" href="/profile"><spring:message code="main.page.dropdown.profile"/></a>
+                                <a class="dropdown-item" href="/logout"><spring:message code="main.page.dropdown.logout"/></a>
                             </div>
                         </c:when>
                         <c:otherwise>
