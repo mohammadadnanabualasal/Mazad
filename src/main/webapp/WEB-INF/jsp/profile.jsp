@@ -28,7 +28,7 @@
         <div class="col-md-6 login-form container-shadow">
             <div class="container">
                 <div class="row">
-                    <div class="text-center image-center"> <img src="/profileImage/${userProfile.getUserId()}" width="200" class="rounded-circle"> </div>
+                    <div class="text-center image-center"> <img src="/profileImage/${userProfile.getId()}" width="200" class="rounded-circle"> </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
