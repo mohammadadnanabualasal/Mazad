@@ -1,6 +1,5 @@
 <%@ page isELIgnored="false" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -28,11 +27,11 @@
         <div class="col-md-6 login-form container-shadow">
             <div class="container">
                 <div class="row">
-                    <div class="text-center image-center"> <img src="/profileImage/${userProfile.getUserId()}" width="200" class="rounded-circle"> </div>
+                    <div class="text-center image-center"> <img src="/profileImage/${userProfile.getId()}" width="200" class="rounded-circle"> </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="mb-0">Full Name:</h6>
+                        <h6 class="mb-0"><spring:message code="profile.full_name"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getFirstName()} ${userProfile.getMiddleName()} ${userProfile.getLastName()}
@@ -41,7 +40,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="mb-0">Email:</h6>
+                        <h6 class="mb-0"><spring:message code="profile.email"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getEmail()}
@@ -50,7 +49,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="mb-0">Phone Number:</h6>
+                        <h6 class="mb-0"><spring:message code="profile.phone_number"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getPhoneNumber()}
@@ -59,7 +58,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="mb-0">Country:</h6>
+                        <h6 class="mb-0"><spring:message code="profile.country"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getCountry()}
@@ -68,7 +67,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="mb-0">City:</h6>
+                        <h6 class="mb-0"><spring:message code="profile.city"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getCity()}
@@ -77,7 +76,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-sm-5">
-                        <h6 class="mb-0">Credit Card Number:</h6>
+                        <h6 class="mb-0"><spring:message code="profile.credit_card_number"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getCreditCardId()}

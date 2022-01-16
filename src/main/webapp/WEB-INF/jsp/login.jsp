@@ -29,26 +29,24 @@
         <div class="col-md-6 login-form container">
             <div class="container">
                 <form role="form" method="post">
-                    <h2>Login</h2>
+                    <h2 class="text-center"><spring:message code="login.page.sign_in"/> </h2>
                     <div class="form-group">
-                        <label for="usernameId" class="col-sm-3 control-label">Email</label>
+                        <label for="usernameId" class="col-sm-3 control-label" style="max-width: 50%"><spring:message code="login.page.email"/></label>
                         <div class="col-sm-9">
                             <input type="text" id="usernameId" name="userName" placeholder="Email" class="form-control" autofocus required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="passwordId" class="col-sm-3 control-label">Password</label>
+                    <div class="form-group " >
+                        <label for="passwordId" class="col-sm-3 control-label" style="max-width: 50%"><spring:message code="login.page.password"/></label>
                         <div class="col-sm-9">
                             <input type="password" id="passwordId" name="password" placeholder="Password" class="form-control" autofocus required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block"><spring:message code="login.page.login"/></button>
                     </div>
                     <div class="create-link">
-                        <a class="create-link" href="/create">
-                            Create New Account
-                        </a>
+                        <a class="create-link" href="/create"><spring:message code="login.page.create_new_account"/></a>
                     </div>
                     <div class ="row row-login">
                         <h3 class="warning">${error}</h3>
