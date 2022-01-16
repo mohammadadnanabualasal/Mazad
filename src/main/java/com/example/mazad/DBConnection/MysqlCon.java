@@ -31,7 +31,7 @@ public class MysqlCon {
         Connection con = null;
         int count = 0;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Mazad", "root", "MOHadn666:");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Mazad", "root", "12345");
             Statement stmt = con.createStatement();
             ResultSet resultSet = stmt.executeQuery(query);
             result.resultSet = resultSet;
