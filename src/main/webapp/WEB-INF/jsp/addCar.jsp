@@ -38,10 +38,10 @@
             <form role="form" method="post" action="/action/addCar" name="car" >
                 <div class="form-group">
 
-                    <label for="title">Ad title</label>
+                    <label for="title"><spring:message code="addCar.label.ad_title"/></label>
                     <textarea class="form-control" id="title" name="title"  rows="2"></textarea>
                     <br/>
-                    <label for="location">Location</label>
+                    <label for="location"><spring:message code="addCar.label.location"/> </label>
                     <select id="location"  class="form-control" name="location">
                         <option value=""></option>
                         <c:forEach var="i" begin="0" end="11">
@@ -49,7 +49,7 @@
                         </c:forEach>
                     </select>
                     <br/>
-                    <label>Car Maker</label>
+                    <label><spring:message code="addCar.label.car_maker"/></label>
                     <select id="carMaker" name="carMaker" class="form-control">
                         <option selected></option>
                         <c:forEach var="i" begin="1" end="38">
@@ -61,25 +61,25 @@
                     <label for="CarModel">Car Model</label>
                     <textarea class="form-control" id="CarModel" name="carModel"  rows="1"></textarea>
                     <br/>
-                    <label for="Year">Year</label>
+                    <label for="Year"><spring:message code="add.label.year"/></label>
                     <input name="year" type="number" min="1970" max="2022" step="1" id="Year" value="2000"/>
                     <br/>
-                    <label>Car Condition</label>
+                    <label><spring:message code="addCar.label.car_condition"/></label>
                     <select id="condition" name="condition" class="form-control">
                         <option selected></option>
                         <option value="1">New</option>
                         <option value="2">Used</option>
                     </select>
                     <br/>
-                    <label>Transmission Type</label>
-                    <select id="tarnsType" name="transType" class="form-control">
+                    <label><spring:message code="addCar.label.transmission_type"/></label>
+                    <select id="tarnsType" name="tarnsType" class="form-control">
                         <option selected></option>
                         <option value="1">Manual</option>
                         <option value="2">Auto</option>
                         <option value="2">Other</option>
                     </select>
                     <br/>
-                    <label>Fuel Type</label>
+                    <label><spring:message code="addCar.label.fuel_type"/></label>
                     <select id="fuelType" name="fuelType" class="form-control">
                         <option selected></option>
                         <option value="1">Gasolin</option>
@@ -88,27 +88,23 @@
                         <option value="4">Hybrid</option>
                     </select>
                     <br/>
-                    <label for="kilometers">Kilometers</label>
-                    <input type="number" id="kilometers" name="kilometers" min="0">
+                    <label for="kilometers"><spring:message code="addCar.label.kilometers"/></label>
+                    <input  type="number" id="kilometers" name="kilometers" min="0" >
                     <br/>
-                    <label for="firstPrice">First Price </label>
-                    <input type="number" id="firstPrice" name="initialPrice" min="0" >
-                    <br/>
-                    <br/>
-                    <label for="color">Color</label>
-                    <textarea class="form-control" id="color" name="color"  rows="1"></textarea>
+                    <label for="firstPrice"><spring:message code="addCar.label.initial_price"/></label>
+                    <input  type="number" id="firstPrice" name="firstPrice" min="0" >
                     <br/>
                     <br/>
-                    <label for="description">Description</label>
+                    <label for="description"><spring:message code="addCar.label.description"/></label>
                     <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                     <br/>
-                    <label for="images">Images</label>
+                    <label for="images"><spring:message code="addCar.label.images"/></label>
                     <br/>
                     <input name="images" type="file" class="form-control-file" id="images" multiple="multiple" accept="image/png, image/gif, image/jpeg"/>
                     <br/>
                 </div>
                 <div class="col text-center">
-                    <button type="submit" class="btn btn-primary center-col">Submit</button>
+                    <button type="submit" class="btn btn-primary center-col"><spring:message code="addCar.label.submit"/></button>
                 </div>
             </form>
             <div class="row">
