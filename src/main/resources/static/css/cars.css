@@ -12,7 +12,7 @@ body {
     width: 950px;
     margin: 20px auto;
     border-radius: 3px;
-    box-shadow: 0px 8px 16px 0px #E0E0E0
+    box-shadow: 1px 3px 7px;
 }
 
 .dark-text {
@@ -65,7 +65,7 @@ body {
 }
 .row.card-strip{
     margin: 20px auto;
-    box-shadow: 0 0 25px rgb(0 0 0 / 5%);
+    box-shadow: 1px 3px 7px;
 
 }
 .carousel-inner{

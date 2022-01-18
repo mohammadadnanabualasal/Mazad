@@ -31,7 +31,7 @@
         <div class="container cards-continer">
             <div class="row">
                 <div class="col-sm-4 p-1">
-                    <div class="card shadow  mb-5 bg-body rounded" onclick="location.href='/furniture';"
+                    <div class="card shadow  mb-5 bg-body rounded" onclick="location.href='/furnitures';"
                          style="width: 18rem;">
                         <img src="/x/furniture.jpg" class="card-img-top imgx" alt="...">
                         <div class="card-body">

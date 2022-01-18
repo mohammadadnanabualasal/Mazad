@@ -58,7 +58,7 @@ public class CarsController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/action/addCar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/action/addCar", method = RequestMethod.POST)
     public ModelAndView submit(Model model, HttpSession session, HttpServletRequest request)
     {
         if(session.getAttribute("user") == null)
@@ -79,11 +79,11 @@ public class CarsController {
         adsEntity.setTitle(parameterMap.get("title")[0]);
         adsEntity.setInitialPrice(Double.parseDouble(parameterMap.get("initialPrice")[0].toString()));
         adsEntity.setAdDescription(parameterMap.get("description")[0]);
-        adsEntity.setCity(AppConfiguration.messageSource().getMessage("addCar.location."+parameterMap.get("location")[0],null,null));
+        adsEntity.setCity(AppConfiguration.messageSource().getMessage("location.city."+parameterMap.get("location")[0],null,null));
         adsEntity.setCountry("Jordan");
         adsEntity.setLastPrice(Double.parseDouble(parameterMap.get("initialPrice")[0]));
         adsEntity.setLastBuyerUserId(null);
-        adsEntity.setTypeId(1);
+        adsEntity.setTypeId(CarsEntity.adTypeId);
         adsEntity.setAdOwnerUserId(((UsersEntity)session.getAttribute("user")).getId());
         adsEntity.setIsActive(false);
         entityManager.persist(adsEntity);
@@ -99,7 +99,7 @@ public class CarsController {
         car.setTransmission_type(Integer.parseInt(parameterMap.get("transType")[0]));
         car.setFuel_type(Integer.parseInt(parameterMap.get("fuelType")[0]));
         car.setColor(parameterMap.get("color")[0]);
-        car.setAd_id(adId);
+        car.setAdId(adId);
         car.setYear(Integer.parseInt(parameterMap.get("year")[0]));
         EntityTransaction transaction2 = entityManager.getTransaction();
         transaction2.begin();
@@ -108,9 +108,14 @@ public class CarsController {
         entityManager.close();
         entityManagerFactory.close();
 
-        ModelAndView modelAndView = new ModelAndView("model");
-        modelAndView.addObject("model",model);
-        modelAndView.setViewName("addCar");
+        try {
+            adsEntity.saveImage(request.getParts());
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/cars");
         return modelAndView;
     }
 }

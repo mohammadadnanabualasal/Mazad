@@ -1,9 +1,14 @@
 package com.example.mazad.entities;
 
+import com.example.mazad.controllers.UtilesController;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
+import javax.servlet.http.Part;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,24 +49,6 @@ public class AdsEntity extends ItemEntity{
     @Column(name = "city")
     private String city;
 
-
-    public static long saveNewAdInDB(AdsEntity ad) {
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            EntityTransaction transaction = entityManager.getTransaction();
-            transaction.begin();
-            entityManager.persist(ad);
-            transaction.commit();
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception exception)
-        {
-            return -1;
-        }
-        return ad.getId();
-
-    }
 
     public int getId() {
         return id;
@@ -182,6 +169,45 @@ public class AdsEntity extends ItemEntity{
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public UsersEntity getOwnerUser()
+    {
+        UsersEntity usersEntity;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = entityManager.createNativeQuery("SELECT * FROM  USERS WHERE id=" + this.getAdOwnerUserId() + ";", UsersEntity.class);
+            usersEntity = (UsersEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return usersEntity;
+    }
+
+    public void saveImage(Collection<Part> parts)
+    {
+        try {
+            int c =1;
+            for (Part p: parts) {
+                if (p.getContentType() != null && p.getContentType().startsWith("image")){
+                    InputStream imageInputStream = p.getInputStream();
+                    File folder = new File(System.getProperty("user.home") + "/MazadImages" + "/" + this.getTypeId() + "/" + this.getId() + "/" );
+                    folder.mkdirs();
+                    File file = new File(folder.getAbsolutePath()+"/"+c+"."+p.getContentType().substring(p.getContentType().indexOf('/')+1));
+                    file.createNewFile();
+                    UtilesController.copyInputStreamToFile(imageInputStream, file);
+                    c++;
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

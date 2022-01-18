@@ -41,6 +41,7 @@ public class CarsEntity extends ItemEntity{
     @Basic
     @Column(name = "ad_id")
     private int adId;
+    public static final int adTypeId=1;
 
 
     public static List<CarsEntity> getAllCars() {
@@ -148,37 +149,12 @@ public class CarsEntity extends ItemEntity{
         this.color = color;
     }
 
-    public int getAd_id() {
-        return adId;
-    }
-
-    public void setAd_id(int ad_id) {
-        this.adId = ad_id;
-    }
-
     public int getYear() {
         return year;
     }
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public AdsEntity getRelatedAdd() {
-        AdsEntity adsEntity;
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            Query query = entityManager.createNativeQuery("SELECT * FROM  ADS WHERE id=" + this.getAd_id() + ";", AdsEntity.class);
-            adsEntity = (AdsEntity) query.getResultList().get(0);
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-        return adsEntity;
     }
 
     public String getCarMaker() {

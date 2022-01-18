@@ -25,7 +25,7 @@
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
 </head>
-<body class="bg-image"style="background-image: url( '/image/900/900/background.jpeg');height: 130vh; background-size:100% 100%; background-repeat: no-repeat">
+<body>
 <c:import url="headr.jsp"/>
 
 <div class="container-fluid">
@@ -35,50 +35,41 @@
         <div class="col-md-4  center-col">
             <br/>
             <br/>
-            <form role="form" method="post" action="/action/addCar" name="car" >
+            <form role="form" method="post" action="/action/addFurniture" name="car" enctype="multipart/form-data">
                 <div class="form-group">
 
-                    <label for="title">Ad title</label>
+                    <label for="title"><spring:message code="addFurniture.label.ad_title"/></label>
                     <textarea class="form-control" id="title" name="title"  rows="2"></textarea>
                     <br/>
-                    <label for="location">Location</label>
+                    <label for="location"><spring:message code="addFurniture.label.location"/></label>
                     <select id="location"  class="form-control" name="location">
                         <option value=""></option>
-                        <option value="0">اربد </option>
-                        <option value="1">جرش </option>
-                        <option value="2">عجلون </option>
-                        <option value="3">البلقاء </option>
-                        <option value="4">مأدبا </option>
-                        <option value="5">المفرق </option>
-                        <option value="6">الزرقاء </option>
-                        <option value="7">عمان </option>
-                        <option value="8">الكرك </option>
-                        <option value="9">الطفيلة </option>
-                        <option value="10">معان </option>
-                        <option value="11">العقبة </option>
+                        <c:forEach var="i" begin="0" end="11">
+                            <option  value="${i}"><spring:message code="location.city.${i}"/></option>
+                        </c:forEach>
                     </select>
                     <br/>
-                    <label> Condition</label>
+                    <label> <spring:message code="addFurniture.label.condition"/></label>
                     <select id="condition" name="condition" class="form-control">
                         <option selected></option>
                         <option value="1">New</option>
                         <option value="2">Used</option>
                     </select>
                     <br/>
-                    <label for="firstPrice">First Price </label>
-                    <input type="number" id="firstPrice" name="firstPrice" min="0" >
+                    <label for="firstPrice"><spring:message code="addFurniture.label.initial_price"/> </label>
+                    <input type="number" id="firstPrice" name="initialPrice" min="0" max="2147483647">
                     <br/>
                     <br/>
-                    <label for="description">Description</label>
+                    <label for="description"><spring:message code="addFurniture.label.description"/></label>
                     <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                     <br/>
-                    <label for="images">Images</label>
+                    <label for="images"><spring:message code="addFurniture.label.images"/></label>
                     <br/>
                     <input name="images" type="file" class="form-control-file" id="images" multiple="multiple" accept="image/png, image/gif, image/jpeg"/>
                     <br/>
                 </div>
                 <div class="col text-center">
-                    <button type="submit" class="btn btn-primary center-col">Submit</button>
+                    <button type="submit" class="btn btn-primary center-col"><spring:message code="addFurniture.label.submit"/></button>
                 </div>
             </form>
             <div class="row">
