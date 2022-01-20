@@ -210,4 +210,43 @@ public class AdsEntity extends ItemEntity{
         }
     }
 
+    public static AdsEntity getEntityById(String id)
+    {
+        AdsEntity adsEntity;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = entityManager.createNativeQuery("SELECT * FROM  ADS WHERE id=" + id + ";", AdsEntity.class);
+            adsEntity = (AdsEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return adsEntity;
+    }
+
+    public static boolean updateAd(String id)
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            AdsEntity a = entityManager.find(AdsEntity.class,id);
+            a.setLastPrice(60000.0);
+            entityManager.persist(a);
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }

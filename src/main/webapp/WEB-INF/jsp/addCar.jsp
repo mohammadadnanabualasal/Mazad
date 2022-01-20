@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="/css/rtl.css">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/shared.css" rel="stylesheet">
-    <title lang="ar"><spring:message code="home.title"/></title>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
+    <title lang="ar"><spring:message code="addCar.title"/></title>
+
 </head>
 <body>
 <c:import url="headr.jsp"/>
@@ -37,6 +38,7 @@
             <br/>
             <form role="form" method="post" action="/action/addCar" name="car" enctype="multipart/form-data">
                 <div class="form-group">
+                    <h2 class="text-center"><spring:message code="addCar.label"/></h2>
 
                     <label for="title"><spring:message code="addCar.label.ad_title"/></label>
                     <textarea class="form-control" id="title" name="title"  rows="2"></textarea>
@@ -64,25 +66,25 @@
                     <label><spring:message code="addCar.label.car_condition"/></label>
                     <select id="condition" name="condition" class="form-control">
                         <option selected></option>
-                        <option value="1">New</option>
-                        <option value="2">Used</option>
+                        <option value="1"><spring:message code="condition.new"/></option>
+                        <option value="2"><spring:message code="condition.used"/></option>
                     </select>
                     <br/>
                     <label><spring:message code="addCar.label.transmission_type"/></label>
                     <select id="tarnsType" name="transType" class="form-control">
                         <option selected></option>
-                        <option value="1">Manual</option>
-                        <option value="2">Auto</option>
-                        <option value="2">Other</option>
+                        <option value="1"><spring:message code="transmission_type.Manual"/> </option>
+                        <option value="2"><spring:message code="transmission_type.Auto"/></option>
+                        <option value="2"><spring:message code="transmission_type.Other"/></option>
                     </select>
                     <br/>
                     <label><spring:message code="addCar.label.fuel_type"/></label>
                     <select id="fuelType" name="fuelType" class="form-control">
                         <option selected></option>
-                        <option value="1">Gasolin</option>
-                        <option value="2">Diesel</option>
-                        <option value="3">Eliecteric</option>
-                        <option value="4">Hybrid</option>
+                        <option value="1"><spring:message code="fuel_type.Gasolin"/> </option>
+                        <option value="2"><spring:message code="fuel_type.Diesel"/></option>
+                        <option value="3"><spring:message code="fuel_type.Eliecteric"/></option>
+                        <option value="4"><spring:message code="fuel_type.Hybrid"/></option>
                     </select>
                     <br/>
                     <label for="kilometers"><spring:message code="addCar.label.kilometers"/></label>
@@ -94,8 +96,14 @@
                     <label for="Year"><spring:message code="addCar.label.year"/></label>
                     <input name="year" type="number" min="1970" max="2022" step="1" id="Year" value="2000"/>
                     <br/>
-                    <label for="color">Color</label>
-                    <textarea class="form-control" id="color" name="color"  rows="1"></textarea>
+                    <label for="color"><spring:message code="addCar.label.color"/></label>
+                    <select id="color" name="color" class="form-control">
+                        <option selected></option>
+                        <c:forEach begin="1" end="10" var="c">
+                            <c:set var="color"><spring:message code="color.${c}"/></c:set>
+                            <option style="background-color: ${color}" value="${color}">${color}</option>
+                        </c:forEach>
+                    </select>
                     <br/>
                     <br/>
                     <label for="description"><spring:message code="addCar.label.description"/></label>

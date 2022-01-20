@@ -197,6 +197,23 @@ public class CarsEntity extends ItemEntity{
         this.adId = adId;
     }
 
+    public static CarsEntity getCarById(String id)
+    {
+        CarsEntity car = null;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query =  entityManager.createNativeQuery("SELECT * FROM CARS where id="+id+";", CarsEntity.class);
+            car = (CarsEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception exception)
+        {
+            return null;
+        }
+        return car;
+
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="/css/rtl.css">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/shared.css" rel="stylesheet">
-    <title lang="ar"><spring:message code="home.title"/></title>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
+    <title lang="ar"><spring:message code="addRealEstates.title"/></title>
+
 </head>
 <body>
 <c:import url="headr.jsp"/>
@@ -35,8 +36,9 @@
         <div class="col-md-4  center-col">
             <br/>
             <br/>
-            <form role="form" method="post" action="/action/addCar" name="car" >
+            <form role="form" method="post" action="/action/addRealEstates" enctype="multipart/form-data">
                 <div class="form-group">
+                    <h2 class="text-center"><spring:message code="addRealEstates.label"/></h2>
 
                     <label for="title"><spring:message code="addRealEstates.label.ad_title"/></label>
                     <textarea class="form-control" id="title" name="title"  rows="2"></textarea>
@@ -49,14 +51,14 @@
                         </c:forEach>
                     </select>
                     <br/>
-                    <label> <spring:message code="addRealEstates.label.RealEstateType"/></label>
+                    <label> <spring:message code="addRealEstates.label.real_estate_type"/></label>
                     <select id="RealEstateType" name="RealEstateType" class="form-control">
                         <option selected></option>
-                        <option value="1">Apartment</option>
-                        <option value="2">Villa</option>
-                        <option value="3">Land</option>
-                        <option value="4">Farm</option>
-                        <option value="5">Commercial</option>
+                        <option value="1"><spring:message code="real_estate_type.Apartment"/> </option>
+                        <option value="2"><spring:message code="real_estate_type.Villa"/></option>
+                        <option value="3"><spring:message code="real_estate_type.Land"/></option>
+                        <option value="4"><spring:message code="real_estate_type.Farm"/></option>
+                        <option value="5"><spring:message code="real_estate_type.Commercial"/></option>
                     </select>
                     <br/>
                     <label for="firstPrice"><spring:message code="addRealEstates.label.initial_price"/> </label>

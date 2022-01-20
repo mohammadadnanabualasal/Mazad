@@ -51,7 +51,8 @@ public class RegistrationController {
         usersEntity.setCountry(country);
         usersEntity.setCity(city);
         usersEntity.setPhoneNumber(phoneNumber);
-        usersEntity.setId(ItemEntity.getGreaterIdOfTable("USERS"));
+        usersEntity.setUserType(1);
+        usersEntity.setId(ItemEntity.getGreaterIdOfTable("USERS")+1);
 
         if (session.getAttribute("user") !=null){
             return new ModelAndView("redirect:/home");

@@ -34,62 +34,62 @@
                     <div class="form-group">
                         <label for="firstName" class="col-sm-4 control-label"><spring:message code="create.page.first_name"/></label>
                         <div class="col-sm-9" >
-                            <input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control"
+                            <input type="text" id="firstName" name="firstName"  class="form-control"
                                    autofocus required value="${usersEntity.getFirstName()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="middleName" class="col-sm-4 control-label"><spring:message code="create.page.middle_name"/></label>
                         <div class="col-sm-9">
-                            <input name="middleName" type="text" id="middleName" placeholder="Middle Name" class="form-control" autofocus required value="${usersEntity.getMiddleName()}">
+                            <input name="middleName" type="text" id="middleName"  class="form-control" autofocus required value="${usersEntity.getMiddleName()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-4 control-label"><spring:message code="create.page.last_name"/></label>
                         <div class="col-sm-9" >
-                            <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control" autofocus required value="${usersEntity.getLastName()}">
+                            <input type="text" id="lastName" name="lastName"  class="form-control" autofocus required value="${usersEntity.getLastName()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label"><spring:message code="create.page.email"/></label>
                         <div class="col-sm-9">
-                            <input type="email" id="email"  placeholder="Email" class="form-control" name= "email" required value="${usersEntity.getEmail()}">
+                            <input type="email" id="email"   class="form-control" name= "email" required value="${usersEntity.getEmail()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-4 control-label"><spring:message code="create.page.password"/></label>
                         <div class="col-sm-9">
-                            <input type="password" id="password" name="password" placeholder="Password" class="form-control" required>
+                            <input type="password" id="password" name="password"  class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirmation" class="col-sm-4 control-label"><spring:message code="create.page.confirm_password"/></label>
                         <div class="col-sm-9">
-                            <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Password" class="form-control" required>
+                            <input type="password" id="passwordConfirmation" name="passwordConfirmation"  class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber" class="col-sm-4 control-label"><spring:message code="create.page.phone_number"/></label>
                         <div class="col-sm-9" >
-                            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number" class="form-control" required value="${usersEntity.getPhoneNumber()}">
+                            <input type="tel" id="phoneNumber" name="phoneNumber"  class="form-control" required value="${usersEntity.getPhoneNumber()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="creditCardId" class="col-sm-4 control-label"><spring:message code="create.page.credit_card_number"/></label>
                         <div class="col-sm-9">
-                            <input type="number" id="creditCardId" name="creditCardId" placeholder="Credit Card Number" class="form-control" required value="${usersEntity.getCreditCardId()}">
+                            <input type="number" id="creditCardId" name="creditCardId"  class="form-control" required value="${usersEntity.getCreditCardId()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="country" class="col-sm-4 control-label"><spring:message code="create.page.country"/></label>
                         <div class="col-sm-9">
-                            <input type="text" id="country" name="country" placeholder="Country" class="form-control" required value="${usersEntity.getCountry()}">
+                            <input type="text" id="country" name="country" class="form-control" required value="${usersEntity.getCountry()}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="city" class="col-sm-4 control-label"><spring:message code="create.page.city"/></label>
                         <div class="col-sm-9">
-                            <input type="text" id="city" name="city" placeholder="City" class="form-control" required value="${usersEntity.getCity()}">
+                            <input type="text" id="city" name="city" class="form-control" required value="${usersEntity.getCity()}">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block"><spring:message code="create.page.create"/></button>

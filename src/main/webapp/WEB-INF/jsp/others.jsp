@@ -19,67 +19,46 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title lang="ar"><spring:message code="carspage.titel"/></title>
+    <title lang="ar"><spring:message code="otherspage.titel"/></title>
 
 </head>
 <body>
 <c:import url="headr.jsp"/>
 
 <div class="container">
-    <c:forEach items="${model.getAttribute('cars')}" var="car">
+    <c:forEach items="${others}" var="other">
     <div class="row card-strip">
 
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="text-left">
-                        <a href="/car/${car.getId()}" class="title-link">${car.getRelatedAdd().getTitle()}</a>
+                            ${other.getRelatedAdd().getTitle()}
                     </h3>
-                    <br/>
                 </div>
             </div>
             <div class="row">
-                <p><b><spring:message code="addCar.label.car_maker"/>:</b> ${car.getCar_maker()}</p>
-             </div>
-            <div class="row">
-                <p><b><spring:message code="addCar.label.car_model"/>:</b> ${car.getModel()}</p>
+                <p><b>Country:</b> ${other.getRelatedAdd().getCountry()}</p>
             </div>
             <div class="row">
-                <p><b><spring:message code="addCar.label.year"/>:</b>  ${car.getYear()} </p>
+                <p><b>City:</b> <spring:message code="${other.getRelatedAdd().getCity()}"/></p>
             </div>
             <div class="row">
-
-                <p><b><spring:message code="addCar.label.transmission_type"/>:</b> <spring:message code="transmission_type.${car.getTransmission_type()}"/></p>
-
-             </div>
-            <div class="row">
-
-                <p><b><spring:message code="addCar.label.fuel_type"/>:</b> <spring:message code="fuel_type.${car.getFuel_type()}"/></p>
-
+            <p><b>Last Price:</b> ${other.getRelatedAdd().getLastPrice()}</p>
             </div>
             <div class="row">
-
-                <p><b><spring:message code="addCar.label.color"/>:</b> ${car.getColor()}</p>&emsp;<span style="background-color: ${car.getColor()}" class="dot-color"></span>
-
-            </div>
-            <div class="row">
-
-                <p><b><spring:message code="addCar.label.car_condition"/>:</b> <spring:message code="car_condition.${car.getCar_condition()}"/></p>
-
-            </div>
-            <div class="row">
-
-                <p><b><spring:message code="addCar.label.kilometers"/>:</b> ${car.getKilometers()}</p>
+                <p><b>${other.getRelatedAdd().getOwnerUser().getFirstName()} ${other.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
             </div>
             <div class="text-center">
-                <a href="/car/${car.getId()}" class="btn btn-primary">Go To</a>
+                <a href="#" class="btn btn-primary">Go To</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div id="myCarousel-${car.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel-${other.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
+
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <c:forEach var="path" items="${car.getRelatedAdd().getImagesPaths()}" varStatus = "status">
+                    <c:forEach var="path" items="${other.getRelatedAdd().getImagesPaths()}" varStatus = "status">
                         <div class="item  ${status.first ?'active':'' }">
                             <img class="img-car" src="${path}" style="width:100%;">
                         </div>
@@ -87,20 +66,22 @@
                 </div>
 
                 <!-- Left and right controls -->
-                <c:if test="${car.getRelatedAdd().getImagesPaths().size() > 1}">
-                    <a class="left carousel-control" href="#myCarousel-${car.getRelatedAdd().getId()}" data-slide="prev">
+                <c:if test="${other.getRelatedAdd().getImagesPaths().size() > 1}">
+                    <a class="left carousel-control" href="#myCarousel-${other.getRelatedAdd().getId()}" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="right carousel-control" href="#myCarousel-${car.getRelatedAdd().getId()}" data-slide="next">
+                    <a class="right carousel-control" href="#myCarousel-${other.getRelatedAdd().getId()}" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </c:if>
             </div>
         </div>
-        </div>
-
+    </div>
     </c:forEach>
+
+
+
 </body>
 </html>

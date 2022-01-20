@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,12 +49,11 @@ public class CarsController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/car")
-    public ModelAndView getCarEntityPage(Model model)
+    @GetMapping(value = "/car/{carId}")
+    public ModelAndView getCarEntityPage(@PathVariable("carId") String id)
     {
         ModelAndView modelAndView = new ModelAndView("model");
-        //model.addAttribute("cars", Car.getCar());
-        modelAndView.addObject("model",model);
+        modelAndView.addObject("car", CarsEntity.getCarById(id));
         modelAndView.setViewName("car");
         return modelAndView;
     }

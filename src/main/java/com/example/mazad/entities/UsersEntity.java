@@ -1,7 +1,5 @@
 package com.example.mazad.entities;
 
-import org.junit.Assert;
-
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.util.Objects;
@@ -41,6 +39,18 @@ public class UsersEntity extends ItemEntity{
     @Column(name = "phone_number")
     private long phoneNumber;
 
+    public int getUserType() {
+        return userTyp;
+    }
+
+    public void setUserType(int getUserType) {
+        this.userTyp = getUserType;
+    }
+
+    @Basic
+    @Column(name = "user_type")
+    private int userTyp;
+
     public static UsersEntity getUser(String email) {
         try {
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
@@ -69,6 +79,7 @@ public class UsersEntity extends ItemEntity{
             entityManagerFactory.close();
         }catch (Exception exception)
         {
+            exception.printStackTrace();
             return false;
         }
         return true;
@@ -170,5 +181,23 @@ public class UsersEntity extends ItemEntity{
 
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public static UsersEntity getUserById(String id)
+    {
+        UsersEntity usersEntity;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = entityManager.createNativeQuery("SELECT * FROM  USERS WHERE id=" + id + ";", UsersEntity.class);
+            usersEntity = (UsersEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return usersEntity;
     }
 }

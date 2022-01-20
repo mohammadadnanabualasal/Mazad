@@ -33,25 +33,11 @@
                     <div class="text-center image-center"> <img src="/profileImage/${userProfile.getId()}" width="200" height="200" class="rounded-circle"> </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-5 form-group">
-                        <input type="file" class="form-control-file" id="#" multiple>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-sm-5">
                         <h6 class="mb-0"><spring:message code="profile.full_name"/></h6>
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getFirstName()} ${userProfile.getMiddleName()} ${userProfile.getLastName()}
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h6 class="mb-0"><spring:message code="profile.email"/></h6>
-                    </div>
-                    <div class="col-sm-7 text-secondary">
-                        ${userProfile.getEmail()}
                     </div>
                 </div>
                 <br/>
@@ -79,15 +65,6 @@
                     </div>
                     <div class="col-sm-7 text-secondary">
                         ${userProfile.getCity()}
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h6 class="mb-0"><spring:message code="profile.credit_card_number"/></h6>
-                    </div>
-                    <div class="col-sm-7 text-secondary">
-                        ${userProfile.getCreditCardId()}
                     </div>
                 </div>
                 <br/>

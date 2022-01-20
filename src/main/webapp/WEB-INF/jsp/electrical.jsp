@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title lang="ar"><spring:message code="carpage.titel"/></title>
+    <title lang="ar"><spring:message code="electricalpage.titel"/></title>
     <style>
         .padding-10{
             padding-top: 10px;
@@ -42,9 +42,9 @@
         <div class="col-md-6 login-form container-shadow">
             <div class="row padding-10">
                 <div class="col-md-10">
-                    <a class="profile-text" href="/profile/${car.getRelatedAdd().getOwnerUser().getId()}">
-                        <img src="/profileImage/${car.getRelatedAdd().getOwnerUser().getId()}" width="50" height="50" class="rounded-circle">
-                         ${car.getRelatedAdd().getOwnerUser().getFirstName()} ${car.getRelatedAdd().getOwnerUser().getLastName()}
+                    <a class="profile-text" href="/profile/${electrical.getRelatedAdd().getOwnerUser().getId()}">
+                        <img src="/profileImage/${electrical.getRelatedAdd().getOwnerUser().getId()}" width="50" height="50" class="rounded-circle">
+                        ${electrical.getRelatedAdd().getOwnerUser().getFirstName()} ${electrical.getRelatedAdd().getOwnerUser().getLastName()}
                     </a>
                 </div>
                 <div class="col-md-2">
@@ -52,10 +52,10 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div id="myCarousel-${car.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
+                    <div id="myCarousel-${electrical.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <c:forEach var="path" items="${car.getRelatedAdd().getImagesPaths()}"
+                            <c:forEach var="path" items="${electrical.getRelatedAdd().getImagesPaths()}"
                                        varStatus="status">
                                 <div class="item  ${status.first ?'active':'' }">
                                     <img class="img-car" src="${path}" style="width:100%;">
@@ -64,13 +64,13 @@
                         </div>
 
                         <!-- Left and right controls -->
-                        <c:if test="${car.getRelatedAdd().getImagesPaths().size() > 1}">
-                            <a class="left carousel-control" href="#myCarousel-${car.getRelatedAdd().getId()}"
+                        <c:if test="${electrical.getRelatedAdd().getImagesPaths().size() > 1}">
+                            <a class="left carousel-control" href="#myCarousel-${electrical.getRelatedAdd().getId()}"
                                data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="right carousel-control" href="#myCarousel-${car.getRelatedAdd().getId()}"
+                            <a class="right carousel-control" href="#myCarousel-${electrical.getRelatedAdd().getId()}"
                                data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                                 <span class="sr-only">Next</span>
@@ -82,62 +82,39 @@
             <div class="container details">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-left">${car.getRelatedAdd().getTitle()}</h2>
+                        <h2 class="text-left">${electrical.getRelatedAdd().getTitle()}</h2>
                         <br/>
                     </div>
+                </div>
+                <div class="row">
+                    <p><b><spring:message code="electrical.label.country"> </b>${electrical.getRelatedAdd().getCountry()} </p>
+                </div>
+                <div class="row">
+                    <p><b><spring:message code="electrical.label.city"/> </b> ${electrical.getRelatedAdd().getCity()} </p>
+                </div>
+                <div class="row">
+    <p><b><spring:message code="electricals.label.last_price"/> </b>${electrical.getRelatedAdd().getLastPrice()}</p>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p><b><spring:message code="addCar.label.description"/>:</b> ${car.getRelatedAdd().getAdDescription()}</p>
+    <p><b><spring:message code="electricals.label.description"/> </b>${electrical.getRelatedAdd().getAdDescription()}</p>
                         <br/>
                     </div>
                 </div>
                 <div class="row">
-                    <p><b><spring:message code="addCar.label.car_maker"/>:</b> ${car.getCar_maker()}</p>
-                </div>
-                <div class="row">
-                    <p><b><spring:message code="addCar.label.car_model"/>:</b> ${car.getModel()}</p>
-                </div>
-                <div class="row">
-                    <p><b><spring:message code="addCar.label.year"/>:</b> ${car.getYear()} </p>
-                </div>
-                <div class="row">
 
-                    <p><b><spring:message code="addCar.label.transmission_type"/>:</b> <spring:message
-                            code="transmission_type.${car.getTransmission_type()}"/></p>
+    <p><b><spring:message code="electricals.label.condition"/> </b>${electrical.getDeviceCondition()}</p>
 
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.fuel_type"/>:</b> <spring:message
-                            code="fuel_type.${car.getFuel_type()}"/></p>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.color"/>:</b> ${car.getColor()}</p>&emsp;<span
-                        style="background-color: ${car.getColor()}" class="dot-color"></span>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.car_condition"/>:</b> <spring:message
-                            code="car_condition.${car.getCar_condition()}"/></p>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.kilometers"/>:</b> ${car.getKilometers()}</p>
                 </div>
                 <div class="row">
                     <form role="form" method="post" action="/action/newPrice" name="car">
                         <label for="firstPrice">Bid</label>
-                        <input  type="number" id="firstPrice" name="newPrice" min="${car.getRelatedAdd().getLastPrice()}" max="2147483647">
-                        <input  type="number" hidden name="adId" value="${car.getRelatedAdd().getId()}">
-                        <input  type="number" hidden name="redirectUrl" value="/car/${car.getId()}">
+                        <input  type="number" id="firstPrice" name="newPrice" min="${electrical.getRelatedAdd().getLastPrice()}" max="2147483647">
+                        <input  type="number" hidden name="adId" value="${electrical.getRelatedAdd().getId()}">
+                        <input  type="number" hidden name="redirectUrl" value="/car/${electrical.getId()}">
                         <br/>
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary center-col"><spring:message code="addCar.label.submit"/></button>
+                            <button type="submit" class="btn btn-primary center-col">22522</button>
                         </div>
                     </form>
                 </div>

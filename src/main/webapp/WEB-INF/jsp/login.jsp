@@ -19,6 +19,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
+    <title lang="ar"><spring:message code="loginpage.titel"/></title>
+
 </head>
 <body>
 <c:import url="headr.jsp"/>
@@ -33,13 +35,13 @@
                     <div class="form-group">
                         <label for="usernameId" class="col-sm-3 control-label" style="max-width: 50%"><spring:message code="login.page.email"/></label>
                         <div class="col-sm-9">
-                            <input type="text" id="usernameId" name="userName" placeholder="Email" class="form-control" autofocus required>
+                            <input type="text" id="usernameId" name="userName"  class="form-control" autofocus required>
                         </div>
                     </div>
                     <div class="form-group " >
                         <label for="passwordId" class="col-sm-3 control-label" style="max-width: 50%"><spring:message code="login.page.password"/></label>
                         <div class="col-sm-9">
-                            <input type="password" id="passwordId" name="password" placeholder="Password" class="form-control" autofocus required>
+                            <input type="password" id="passwordId" name="password" class="form-control" autofocus required>
                         </div>
                     </div>
                     <div class="form-group">

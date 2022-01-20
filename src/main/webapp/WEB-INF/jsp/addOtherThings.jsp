@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="/css/rtl.css">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/shared.css" rel="stylesheet">
-    <title lang="ar"><spring:message code="home.title"/></title>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
+    <title lang="ar"><spring:message code="addOtherThings.titel"/></title>
+
 </head>
 <body>
 <c:import url="headr.jsp"/>
@@ -35,9 +36,10 @@
         <div class="col-md-4  center-col">
             <br/>
             <br/>
-            <form role="form" method="post" action="/action/addCar" name="car" >
+            <form role="form" method="post" action="/action/addOthers" enctype="multipart/form-data">
                 <div class="form-group">
-
+                    <h2 class="text-center"><spring:message code="addOtherThings.label"/></h2>
+                    <br/>
                     <label for="title"><spring:message code="addOtherThings.label.ad_title"/></label>
                     <textarea class="form-control" id="title" name="title"  rows="2"></textarea>
                     <br/>
@@ -52,8 +54,8 @@
                     <label><spring:message code="addOtherThings.label.condition"/></label>
                     <select id="condition" name="condition" class="form-control">
                         <option selected></option>
-                        <option value="1">New</option>
-                        <option value="2">Used</option>
+                        <option value="1"><spring:message code="condition.new"/></option>
+                        <option value="2"><spring:message code="condition.used"/></option>
                     </select>
                     <br/>
                     <label for="firstPrice"><spring:message code="addOtherThings.label.initial_price"/></label>

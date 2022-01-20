@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title lang="ar">Furnitures</title>
+    <title lang="ar"><spring:message code="furniturespage.titel"/></title>
 
 </head>
 <body>
@@ -32,19 +32,27 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-left">
-                            ${furniture.getRelatedAdd().getTitle()}
-                    </h3>
+                    <h3 class="text-left"> ${furniture.getRelatedAdd().getTitle()}</h3>
                 </div>
             </div>
             <div class="row">
-                <p>
-                    <span class="badge badge-default">Location: ${furniture.getRelatedAdd().getCountry()} / <spring:message code="${furniture.getRelatedAdd().getCity()}"/></span>
-                </p>
-                <br/>
-                <p><span class="badge badge-default">Last Price: ${furniture.getRelatedAdd().getLastPrice()}</span></p><br/>
-                <p><span class="badge badge-default">${furniture.getRelatedAdd().getOwnerUser().getFirstName()} ${furniture.getRelatedAdd().getOwnerUser().getLastName()}</span></p><br/>
+                <p><b>Country:</b> ${furniture.getRelatedAdd().getCountry()}</p>
             </div>
+            <div class="row">
+                <p><b>City:</b> <spring:message code="${furniture.getRelatedAdd().getCity()}"/></p>
+
+            </div>
+            <div class="row">
+                <p><b>Last Price:</b> ${furniture.getRelatedAdd().getLastPrice()}</p>
+            </div>
+            <div class="row">
+                <p><b> ${furniture.getRelatedAdd().getOwnerUser().getFirstName()} ${furniture.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
+
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary">Go To</a>
+            </div>
+
         </div>
         <div class="col-md-4">
             <div id="myCarousel-${furniture.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
@@ -73,6 +81,7 @@
         </div>
     </div>
     </c:forEach>
+</div>
 
 </body>
 </html>

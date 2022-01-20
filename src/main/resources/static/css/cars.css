@@ -78,3 +78,16 @@ body {
     height: 250px!important;
     object-fit: cover;
 }
+.dot-color {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.title-link
+{
+     font-family: monospace;
+     font-weight: bold;
+     color: black;
+    text-decoration: none;
+}

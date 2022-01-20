@@ -1,18 +1,21 @@
 package com.example.mazad.controllers;
 
+import com.example.mazad.entities.AdsEntity;
+import com.example.mazad.entities.UsersEntity;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
+import java.util.Map;
 
 @Controller
 public class UtilesController {
@@ -72,5 +75,21 @@ public class UtilesController {
             }
         }
 
+    }
+    @PostMapping(value = "/action/newPrice")
+    public ModelAndView postNewPrice(HttpServletRequest request, HttpSession session)
+    {
+        if(session.getAttribute("user") == null)
+        {
+            return new ModelAndView("redirect:/login");
+        }
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        double newPrice = Double.parseDouble(parameterMap.get("newPrice")[0]);
+        String adId =parameterMap.get("adId")[0];
+        AdsEntity ad = AdsEntity.getEntityById(adId);
+        //ad.setLastPrice(newPrice);
+        //ad.setLastBuyerUserId(((UsersEntity)session.getAttribute("user")).getId());
+       // AdsEntity.updateAd(ad, adId);
+        return new ModelAndView("redirect:"+parameterMap.get("redirectUrl")[0]);
     }
 }
