@@ -44,6 +44,24 @@ public class FurnitureEntity extends ItemEntity{
         this.adId = adId;
     }
 
+    public static FurnitureEntity getFurnitureById(String id)
+    {
+        FurnitureEntity furniture = null;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query =  entityManager.createNativeQuery("SELECT * FROM FURNITURE where id="+id+";", FurnitureEntity.class);
+            furniture = (FurnitureEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception exception)
+        {
+            return null;
+        }
+        return furniture;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

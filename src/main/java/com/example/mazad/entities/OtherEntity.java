@@ -33,6 +33,24 @@ public class OtherEntity extends ItemEntity{
         this.adId = adId;
     }
 
+    public static OtherEntity getOtherById(String id)
+    {
+        OtherEntity other = null;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query =  entityManager.createNativeQuery("SELECT * FROM OTHER_ITEMS where id="+id+";", OtherEntity.class);
+            other = (OtherEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception exception)
+        {
+            return null;
+        }
+        return other;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

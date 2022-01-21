@@ -1,5 +1,7 @@
 package com.example.mazad.entities;
 
+        import org.springframework.web.servlet.ModelAndView;
+
         import javax.persistence.*;
         import java.util.ArrayList;
         import java.util.List;
@@ -68,5 +70,23 @@ public class RealEstatesEntity extends ItemEntity{
         entityManager.close();
         entityManagerFactory.close();
         return realEstates;
+    }
+
+    public static RealEstatesEntity getRealEstateById(String id){
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            RealEstatesEntity realEstate = null;
+            Query query = entityManager.createNativeQuery("SELECT * FROM  REAL_ESTATES where id="+id + ";", RealEstatesEntity.class);
+            realEstate = (RealEstatesEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+            return realEstate;
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

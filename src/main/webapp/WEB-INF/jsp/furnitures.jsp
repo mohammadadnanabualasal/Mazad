@@ -32,7 +32,9 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-left"> ${furniture.getRelatedAdd().getTitle()}</h3>
+                    <h3 class="text-left">
+                        <a href="/furniture/${furniture.getId()}" class="title-link">${furniture.getRelatedAdd().getTitle()}</a>
+                    </h3>
                 </div>
             </div>
             <div class="row">
@@ -50,7 +52,7 @@
 
             </div>
             <div class="text-center">
-                <a href="#" class="btn btn-primary">Go To</a>
+                <a href="/furniture/${furniture.getId()}" class="btn btn-primary">Go To</a>
             </div>
 
         </div>

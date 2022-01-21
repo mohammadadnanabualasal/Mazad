@@ -7,10 +7,7 @@ import com.example.mazad.entities.UsersEntity;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,7 +35,14 @@ public class OtherThingsController {
         }
         return new ModelAndView("addOtherThings");
     }
-
+    @GetMapping(value = "/other/{otherId}")
+    public ModelAndView getOtherEntityPage(@PathVariable("otherId") String id)
+    {
+        ModelAndView modelAndView = new ModelAndView("model");
+        modelAndView.addObject("other", OtherEntity.getOtherById(id));
+        modelAndView.setViewName("other");
+        return modelAndView;
+    }
     @RequestMapping(value = "/action/addOthers",method = RequestMethod.POST)
     public ModelAndView submit(HttpSession session, HttpServletRequest request)
     {

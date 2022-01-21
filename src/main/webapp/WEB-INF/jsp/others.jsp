@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="text-left">
-                            ${other.getRelatedAdd().getTitle()}
+                            <a href="/other/${other.getId()}" class="title-link">${other.getRelatedAdd().getTitle()}</a>
                     </h3>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <p><b>${other.getRelatedAdd().getOwnerUser().getFirstName()} ${other.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
             </div>
             <div class="text-center">
-                <a href="#" class="btn btn-primary">Go To</a>
+                <a href="/other/${other.getId()}" class="btn btn-primary">Go To</a>
             </div>
         </div>
         <div class="col-md-4">

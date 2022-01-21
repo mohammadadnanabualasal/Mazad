@@ -26,29 +26,29 @@
 <c:import url="headr.jsp"/>
 
 <div class="container">
-    <c:forEach items="${realEstates}" var="realEstates">
+    <c:forEach items="${realEstates}" var="realEstate">
     <div class="row card-strip">
 
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="text-left">
-                            ${realEstates.getRelatedAdd().getTitle()}
+                        <a href="/realEstate/${realEstate.getId()}">${realEstate.getRelatedAdd().getTitle()}</a>
                     </h3>
                 </div>
             </div>
             <div class="row">
-                <p><b>Country:</b> ${realEstates.getRelatedAdd().getCountry()}</p>
-                <p><span class="badge badge-default">${realEstates.getRelatedAdd().getOwnerUser().getFirstName()} ${realEstates.getRelatedAdd().getOwnerUser().getLastName()}</span></p><br/>
+                <p><b>Country:</b> ${realEstate.getRelatedAdd().getCountry()}</p>
+                <p><span class="badge badge-default">${realEstate.getRelatedAdd().getOwnerUser().getFirstName()} ${realEstate.getRelatedAdd().getOwnerUser().getLastName()}</span></p><br/>
             </div>
             <div class="row">
-                <p><b>City:</b> <spring:message code="${realEstates.getRelatedAdd().getCity()}"/></p>
+                <p><b>City:</b> <spring:message code="${realEstate.getRelatedAdd().getCity()}"/></p>
             </div>
             <div class="row">
-                <p><b>Last Price:</b> ${realEstates.getRelatedAdd().getLastPrice()}</p>
+                <p><b>Last Price:</b> ${realEstate.getRelatedAdd().getLastPrice()}</p>
             </div>
             <div class="row">
-                <p><b>${realEstates.getRelatedAdd().getOwnerUser().getFirstName()} ${realEstates.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
+                <p><b>${realEstate.getRelatedAdd().getOwnerUser().getFirstName()} ${realEstate.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
 
             </div>
             <div class="text-center">
@@ -56,11 +56,11 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div id="myCarousel-${realEstates.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel-${realEstate.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <c:forEach var="path" items="${realEstates.getRelatedAdd().getImagesPaths()}" varStatus = "status">
+                    <c:forEach var="path" items="${realEstate.getRelatedAdd().getImagesPaths()}" varStatus = "status">
                         <div class="item  ${status.first ?'active':'' }">
                             <img class="img-car" src="${path}" style="width:100%;">
                         </div>
@@ -68,12 +68,12 @@
                 </div>
 
                 <!-- Left and right controls -->
-                <c:if test="${realEstates.getRelatedAdd().getImagesPaths().size() > 1}">
-                    <a class="left carousel-control" href="#myCarousel-${realEstates.getRelatedAdd().getId()}" data-slide="prev">
+                <c:if test="${realEstate.getRelatedAdd().getImagesPaths().size() > 1}">
+                    <a class="left carousel-control" href="#myCarousel-${realEstate.getRelatedAdd().getId()}" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="right carousel-control" href="#myCarousel-${realEstates.getRelatedAdd().getId()}" data-slide="next">
+                    <a class="right carousel-control" href="#myCarousel-${realEstate.getRelatedAdd().getId()}" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right"></span>
                         <span class="sr-only">Next</span>
                     </a>
