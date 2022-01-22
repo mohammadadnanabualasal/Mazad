@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </script>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="<spring:message code="html.dir"/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title lang="ar"><spring:message code="furniturepage.titel"/></title>
     <style>
-        .padding-10{
+        .padding-10 {
             padding-top: 10px;
             padding-bottom: 10px;
         }
@@ -26,9 +26,6 @@
         .details {
             margin-top: 0px !important;
             max-width: 100%;
-        }
-        .profile-text{
-            color: black;
         }
     </style>
 </head>
@@ -43,7 +40,8 @@
             <div class="row padding-10">
                 <div class="col-md-10">
                     <a class="profile-text" href="/profile/${furniture.getRelatedAdd().getOwnerUser().getId()}">
-                        <img src="/profileImage/${furniture.getRelatedAdd().getOwnerUser().getId()}" width="50" height="50" class="rounded-circle">
+                        <img src="/profileImage/${furniture.getRelatedAdd().getOwnerUser().getId()}" width="50"
+                             height="50" class="rounded-circle">
                         ${furniture.getRelatedAdd().getOwnerUser().getFirstName()} ${furniture.getRelatedAdd().getOwnerUser().getLastName()}
                     </a>
                 </div>
@@ -52,7 +50,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div id="myCarousel-${furniture.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
+                    <div id="myCarousel-${furniture.getRelatedAdd().getId()}" class="carousel slide"
+                         data-ride="carousel">
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <c:forEach var="path" items="${furniture.getRelatedAdd().getImagesPaths()}"
@@ -81,38 +80,41 @@
             </div>
             <div class="container details">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-left">${furniture.getRelatedAdd().getTitle()}</h2>
-                        <br/>
-                    </div>
+                    <h2 class="title-link">${furniture.getRelatedAdd().getTitle()}</h2>
+                    <br/>
                 </div>
                 <div class="row">
-                    <p><b><spring:message code="electrical.label.country"/> </b>${furniture.getRelatedAdd().getCountry()} </p>
+                    <p><b class="card-lable"><spring:message
+                            code="electrical.label.country"/> </b>${furniture.getRelatedAdd().getCountry()} </p>
                 </div>
                 <div class="row">
-                    <p><b><spring:message code="electrical.label.city"/> </b><spring:message code="${furniture.getRelatedAdd().getCity()}"/></p>
+                    <p><b class="card-lable"><spring:message code="electrical.label.city"/> </b><spring:message
+                            code="${furniture.getRelatedAdd().getCity()}"/></p>
                 </div>
                 <div class="row">
-                    <p><b><spring:message code="electricals.label.last_price"/> </b>${furniture.getRelatedAdd().getLastPrice()}</p>
-                </div>
-                <div class="row">
-                        <p><b><spring:message code="electricals.label.description"/> </b>${furniture.getRelatedAdd().getAdDescription()}</p>
-                        <br/>
+                    <p><b class="card-lable"><spring:message
+                            code="electricals.label.last_price"/> </b>${furniture.getRelatedAdd().getLastPrice()}</p>
                 </div>
                 <div class="row">
 
-                    <p><b><spring:message code="electricals.label.condition"/></b> <spring:message code="condition.${furniture.getFurnitureCondition()}"/></p>
+                    <p><b class="card-lable"><spring:message code="electricals.label.condition"/></b> <spring:message
+                            code="condition.${furniture.getFurnitureCondition()}"/></p>
 
                 </div>
                 <div class="row">
+                    <p><b class="card-lable"><spring:message
+                            code="electricals.label.description"/> </b>${furniture.getRelatedAdd().getAdDescription()}
+                    </p>
+                    <br/>
+                </div>
+                <div class="text-center">
                     <form role="form" method="post" action="/action/newPrice" name="car">
-                        <label for="firstPrice">Bid</label>
-                        <input  type="number" id="firstPrice" name="newPrice" min="${furniture.getRelatedAdd().getLastPrice()}" max="2147483647">
-                        <input  type="number" hidden name="adId" value="${furniture.getRelatedAdd().getId()}">
-                        <input  type="number" hidden name="redirectUrl" value="/car/${furniture.getId()}">
+                        <input type="number" id="firstPrice" name="newPrice" min="${furniture.getRelatedAdd().getLastPrice()}" max="2147483647" placeholder="your offer">
+                        <input type="number" hidden name="adId" value="${furniture.getRelatedAdd().getId()}">
+                        <input hidden name="redirectUrl" value="/furniture/${furniture.getId()}">
                         <br/>
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary center-col">Go To</button>
+                            <button type="submit" class="btn btn-primary center-col"><spring:message code="addCar.label.submit"/></button>
                         </div>
                     </form>
                 </div>

@@ -228,16 +228,14 @@ public class AdsEntity extends ItemEntity{
         return adsEntity;
     }
 
-    public static boolean updateAd(String id)
+    public static boolean updateAd(AdsEntity a)
     {
         try {
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
-            AdsEntity a = entityManager.find(AdsEntity.class,id);
-            a.setLastPrice(60000.0);
-            entityManager.persist(a);
+            entityManager.merge(a);
             transaction.commit();
             entityManager.close();
             entityManagerFactory.close();
@@ -249,4 +247,44 @@ public class AdsEntity extends ItemEntity{
         return true;
     }
 
+    public static boolean enableAd(String adId)
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            AdsEntity ad = AdsEntity.getEntityById(adId);
+            ad.setIsActive(true);
+            entityManager.merge(ad);
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean deleteAd(String adId)
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            AdsEntity ad = AdsEntity.getEntityById(adId);
+            entityManager.remove(ad);
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

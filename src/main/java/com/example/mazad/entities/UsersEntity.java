@@ -38,15 +38,6 @@ public class UsersEntity extends ItemEntity{
     @Basic
     @Column(name = "phone_number")
     private long phoneNumber;
-
-    public int getUserType() {
-        return userTyp;
-    }
-
-    public void setUserType(int getUserType) {
-        this.userTyp = getUserType;
-    }
-
     @Basic
     @Column(name = "user_type")
     private int userTyp;
@@ -84,6 +75,32 @@ public class UsersEntity extends ItemEntity{
         }
         return true;
 
+    }
+
+    public static UsersEntity getUserById(String id)
+    {
+        UsersEntity usersEntity;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = entityManager.createNativeQuery("SELECT * FROM  USERS WHERE id=" + id + ";", UsersEntity.class);
+            usersEntity = (UsersEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return usersEntity;
+    }
+
+    public int getUserType() {
+        return userTyp;
+    }
+
+    public void setUserType(int getUserType) {
+        this.userTyp = getUserType;
     }
 
     public int getId() {
@@ -183,21 +200,8 @@ public class UsersEntity extends ItemEntity{
         this.phoneNumber = phoneNumber;
     }
 
-    public static UsersEntity getUserById(String id)
+    public boolean isAdmin()
     {
-        UsersEntity usersEntity;
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            Query query = entityManager.createNativeQuery("SELECT * FROM  USERS WHERE id=" + id + ";", UsersEntity.class);
-            usersEntity = (UsersEntity) query.getResultList().get(0);
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-        return usersEntity;
+        return getUserType() == 2;
     }
 }

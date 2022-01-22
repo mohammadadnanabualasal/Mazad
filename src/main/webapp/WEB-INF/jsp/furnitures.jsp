@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="<spring:message code="html.dir"/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,25 +31,19 @@
 
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-12">
                     <h3 class="text-left">
                         <a href="/furniture/${furniture.getId()}" class="title-link">${furniture.getRelatedAdd().getTitle()}</a>
                     </h3>
-                </div>
             </div>
             <div class="row">
-                <p><b>Country:</b> ${furniture.getRelatedAdd().getCountry()}</p>
+                <p><b class="card-lable">Country:</b> <span class="card-lable-value">${furniture.getRelatedAdd().getCountry()}</span></p>
             </div>
             <div class="row">
-                <p><b>City:</b> <spring:message code="${furniture.getRelatedAdd().getCity()}"/></p>
+                <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message code="${furniture.getRelatedAdd().getCity()}"/></span></p>
 
             </div>
             <div class="row">
-                <p><b>Last Price:</b> ${furniture.getRelatedAdd().getLastPrice()}</p>
-            </div>
-            <div class="row">
-                <p><b> ${furniture.getRelatedAdd().getOwnerUser().getFirstName()} ${furniture.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
-
+                <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${furniture.getRelatedAdd().getLastPrice()}</span></p>
             </div>
             <div class="text-center">
                 <a href="/furniture/${furniture.getId()}" class="btn btn-primary">Go To</a>

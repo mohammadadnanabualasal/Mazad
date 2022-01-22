@@ -83,11 +83,24 @@ body {
     width: 25px;
     border-radius: 50%;
     display: inline-block;
+    border: 2px solid;
 }
 .title-link
 {
-     font-family: monospace;
-     font-weight: bold;
-     color: black;
-    text-decoration: none;
+    font-family: monospace;
+    font-weight: bold;
+    color: black;
+    text-decoration: none !important;
+    text-transform: uppercase;
+}
+.card-lable{
+    font-size: large;
+    color: gray;
+}
+.card-lable-value{
+    font-weight: bold;
+    font-style: italic;
+}
+.profile-text{
+    color: black;
 }

@@ -17,6 +17,8 @@ public class RealEstatesEntity extends ItemEntity{
     @Column(name = "real_state_type_id")
     private int realStateTypeId;
 
+    public static final int adTypeId = 4;
+
     @Override
     public int getAdId() {
         return adId;

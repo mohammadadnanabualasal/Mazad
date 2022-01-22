@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </script>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="<spring:message code="html.dir"/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title lang="ar"><spring:message code="carpage.titel"/></title>
     <style>
-        .padding-10{
+        .padding-10 {
             padding-top: 10px;
             padding-bottom: 10px;
         }
@@ -26,9 +26,6 @@
         .details {
             margin-top: 0px !important;
             max-width: 100%;
-        }
-        .profile-text{
-            color: black;
         }
     </style>
 </head>
@@ -43,8 +40,9 @@
             <div class="row padding-10">
                 <div class="col-md-10">
                     <a class="profile-text" href="/profile/${car.getRelatedAdd().getOwnerUser().getId()}">
-                        <img src="/profileImage/${car.getRelatedAdd().getOwnerUser().getId()}" width="50" height="50" class="rounded-circle">
-                         ${car.getRelatedAdd().getOwnerUser().getFirstName()} ${car.getRelatedAdd().getOwnerUser().getLastName()}
+                        <img src="/profileImage/${car.getRelatedAdd().getOwnerUser().getId()}" width="50" height="50"
+                             class="rounded-circle">
+                        ${car.getRelatedAdd().getOwnerUser().getFirstName()} ${car.getRelatedAdd().getOwnerUser().getLastName()}
                     </a>
                 </div>
                 <div class="col-md-2">
@@ -81,65 +79,63 @@
             </div>
             <div class="container details">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-left">${car.getRelatedAdd().getTitle()}</h2>
-                        <br/>
-                    </div>
+                    <h2 class="title-link">${car.getRelatedAdd().getTitle()}</h2>
+                    <br/>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="row">
+                        <p><b><spring:message code="addCar.label.car_maker"/>:</b> ${car.getCar_maker()}</p>
+                    </div>
+                    <div class="row">
+                        <p><b><spring:message code="addCar.label.car_model"/>:</b> ${car.getModel()}</p>
+                    </div>
+                    <div class="row">
+                        <p><b><spring:message code="addCar.label.year"/>:</b> ${car.getYear()} </p>
+                    </div>
+                    <div class="row">
+
+                        <p><b><spring:message code="addCar.label.transmission_type"/>:</b> <spring:message
+                                code="transmission_type.${car.getTransmission_type()}"/></p>
+
+                    </div>
+                    <div class="row">
+
+                        <p><b><spring:message code="addCar.label.fuel_type"/>:</b> <spring:message
+                                code="fuel_type.${car.getFuel_type()}"/></p>
+
+                    </div>
+                    <div class="row">
+
+                        <p><b><spring:message code="addCar.label.color"/>:</b> ${car.getColor()}</p>&emsp;<span
+                            style="background-color: ${car.getColor()}" class="dot-color"></span>
+
+                    </div>
+                    <div class="row">
+
+                        <p><b><spring:message code="addCar.label.car_condition"/>:</b> <spring:message
+                                code="car_condition.${car.getCar_condition()}"/></p>
+
+                    </div>
+                    <div class="row">
+
+                        <p><b><spring:message code="addCar.label.kilometers"/>:</b> ${car.getKilometers()}</p>
+                    </div>
+                    <div class="row">
                         <p><b><spring:message code="addCar.label.description"/>:</b> ${car.getRelatedAdd().getAdDescription()}</p>
                         <br/>
                     </div>
-                </div>
-                <div class="row">
-                    <p><b><spring:message code="addCar.label.car_maker"/>:</b> ${car.getCar_maker()}</p>
-                </div>
-                <div class="row">
-                    <p><b><spring:message code="addCar.label.car_model"/>:</b> ${car.getModel()}</p>
-                </div>
-                <div class="row">
-                    <p><b><spring:message code="addCar.label.year"/>:</b> ${car.getYear()} </p>
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.transmission_type"/>:</b> <spring:message
-                            code="transmission_type.${car.getTransmission_type()}"/></p>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.fuel_type"/>:</b> <spring:message
-                            code="fuel_type.${car.getFuel_type()}"/></p>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.color"/>:</b> ${car.getColor()}</p>&emsp;<span
-                        style="background-color: ${car.getColor()}" class="dot-color"></span>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.car_condition"/>:</b> <spring:message
-                            code="car_condition.${car.getCar_condition()}"/></p>
-
-                </div>
-                <div class="row">
-
-                    <p><b><spring:message code="addCar.label.kilometers"/>:</b> ${car.getKilometers()}</p>
-                </div>
-                <div class="row">
-                    <form role="form" method="post" action="/action/newPrice" name="car">
-                        <label for="firstPrice">Bid</label>
-                        <input  type="number" id="firstPrice" name="newPrice" min="${car.getRelatedAdd().getLastPrice()}" max="2147483647">
-                        <input  type="number" hidden name="adId" value="${car.getRelatedAdd().getId()}">
-                        <input  type="number" hidden name="redirectUrl" value="/car/${car.getId()}">
-                        <br/>
-                        <div class="col text-center">
-                            <button type="submit" class="btn btn-primary center-col"><spring:message code="addCar.label.submit"/></button>
-                        </div>
-                    </form>
+                    <div class="text-center">
+                        <form role="form" method="post" action="/action/newPrice" name="car">
+                            <input type="number" id="firstPrice" name="newPrice" min="${car.getRelatedAdd().getLastPrice()}" max="2147483647" placeholder="your offer">
+                            <input type="number" hidden name="adId" value="${car.getRelatedAdd().getId()}">
+                            <input hidden name="redirectUrl" value="/car/${car.getId()}">
+                            <br/>
+                            <br/>
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary center-col"><spring:message code="addCar.label.submit"/></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

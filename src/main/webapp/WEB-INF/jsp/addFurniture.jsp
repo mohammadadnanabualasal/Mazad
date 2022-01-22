@@ -7,7 +7,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="<spring:message code="html.dir"/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
                     <h2 class="text-center"><spring:message code="addFurniture.label"/> </h2>
 
                     <label for="title"><spring:message code="addFurniture.label.ad_title"/></label>
-                    <textarea class="form-control" id="title" name="title"  rows="2"></textarea>
+                    <textarea class="form-control" id="title" name="title"  rows="2" maxlength="100"></textarea>
                     <br/>
                     <label for="location"><spring:message code="addFurniture.label.location"/></label>
                     <select id="location"  class="form-control" name="location">
@@ -63,7 +63,7 @@
                     <br/>
                     <br/>
                     <label for="description"><spring:message code="addFurniture.label.description"/></label>
-                    <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="5" maxlength="5000"></textarea>
                     <br/>
                     <label for="images"><spring:message code="addFurniture.label.images"/></label>
                     <br/>

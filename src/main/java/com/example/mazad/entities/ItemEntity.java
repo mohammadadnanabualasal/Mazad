@@ -1,6 +1,8 @@
 package com.example.mazad.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemEntity {
 
@@ -31,6 +33,7 @@ public class ItemEntity {
             entityManagerFactory.close();
         }catch (Exception exception)
         {
+            exception.printStackTrace();
             return -1;
         }
         return entity.getId();
@@ -57,4 +60,142 @@ public class ItemEntity {
     {
         return -1;
     }
+
+    public static List<ItemEntity> getAllActiveCars() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        List<ItemEntity> entities = new ArrayList<>();
+        Query query = entityManager.createNativeQuery("SELECT * FROM CARS;", CarsEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT * FROM ELECTRICALS;", ElectricalEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT * FROM FURNITURE;", FurnitureEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT * FROM REAL_ESTATES;", RealEstatesEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT * FROM OTHER_ITEMS;", OtherEntity.class);
+        entities.addAll(query.getResultList());
+        entityManager.close();
+        entityManagerFactory.close();
+        List<ItemEntity> entities2 = new ArrayList<>();
+        for (ItemEntity entity:entities
+             ) {
+            if (!entity.getRelatedAdd().getIsActive())
+            {
+                entities2.add(entity);
+            }
+        }
+        return entities2;
+    }
+
+    public String getEntityUrl()
+    {
+        String path="";
+        switch (getRelatedAdd().getTypeId()) {
+            case CarsEntity.adTypeId:
+                path +="/car/";
+                break;
+            case ElectricalEntity.adTypeId:
+                path +="/electrical/";
+                break;
+            case FurnitureEntity.adTypeId:
+                path +="/furniture/";
+                break;
+            case RealEstatesEntity.adTypeId:
+                path +="/realEstate/";
+                break;
+            case OtherEntity.adTypeId:
+                path +="/other/";
+                break;
+        }
+        path += getId();
+        return path;
+    }
+
+    public String getTableName()
+    {
+        String name="";
+        switch (getId()) {
+            case CarsEntity.adTypeId:
+                name +="CARS";
+                break;
+            case ElectricalEntity.adTypeId:
+                name +="ELECTRICALS";
+                break;
+            case FurnitureEntity.adTypeId:
+                name +="FURNITURE";
+                break;
+            case RealEstatesEntity.adTypeId:
+                name +="REAL_ESTATES";
+                break;
+            case OtherEntity.adTypeId:
+                name +="OTHER_ITEMS";
+                break;
+        }
+        return name;
+    }
+
+    public static ItemEntity getEntityById(String id, int typeId){
+        ItemEntity entity = null;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = null;
+            String tableName = "";
+            switch (typeId) {
+                case CarsEntity.adTypeId:
+                    tableName +="CARS";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where id="+id+";", CarsEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case ElectricalEntity.adTypeId:
+                    tableName +="ELECTRICALS";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where id="+id+";", ElectricalEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case FurnitureEntity.adTypeId:
+                    tableName +="FURNITURE";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where id="+id+";", FurnitureEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case RealEstatesEntity.adTypeId:
+                    tableName +="REAL_ESTATES";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where id="+id+";", RealEstatesEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case OtherEntity.adTypeId:
+                    tableName +="OTHER_ITEMS";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where id="+id+";", OtherEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            return null;
+        }
+        return entity;
+    }
+
+    public boolean deleteEntity()
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            entityManager.remove(entityManager.contains(this) ? this : entityManager.merge(this));
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }

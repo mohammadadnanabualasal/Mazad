@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="<spring:message code="html.dir"/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,28 +31,21 @@
 
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-12">
                     <h3 class="text-left">
-                        <a href="/realEstate/${realEstate.getId()}">${realEstate.getRelatedAdd().getTitle()}</a>
+                        <a href="/realEstate/${realEstate.getId()}" class="title-link">${realEstate.getRelatedAdd().getTitle()}</a>
                     </h3>
-                </div>
             </div>
             <div class="row">
-                <p><b>Country:</b> ${realEstate.getRelatedAdd().getCountry()}</p>
-                <p><span class="badge badge-default">${realEstate.getRelatedAdd().getOwnerUser().getFirstName()} ${realEstate.getRelatedAdd().getOwnerUser().getLastName()}</span></p><br/>
+                <p><b class="card-lable">Country:</b> <span class="card-lable-value">${realEstate.getRelatedAdd().getCountry()}</span></p>
             </div>
             <div class="row">
-                <p><b>City:</b> <spring:message code="${realEstate.getRelatedAdd().getCity()}"/></p>
+                <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message code="${realEstate.getRelatedAdd().getCity()}"/></span></p>
             </div>
             <div class="row">
-                <p><b>Last Price:</b> ${realEstate.getRelatedAdd().getLastPrice()}</p>
-            </div>
-            <div class="row">
-                <p><b>${realEstate.getRelatedAdd().getOwnerUser().getFirstName()} ${realEstate.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
-
+                <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${realEstate.getRelatedAdd().getLastPrice()}</span></p>
             </div>
             <div class="text-center">
-                <a href="#" class="btn btn-primary">Go To</a>
+                <a href="/realEstate/${realEstate.getId()}" class="btn btn-primary">Go To</a>
             </div>
         </div>
         <div class="col-md-4">

@@ -28,7 +28,7 @@
 <body>
 <c:import url="headr.jsp"/>
 <div class="container-fluid" style="padding-top: 100px">
-    <h1>Error</h1>
+    <h1>You are not admin!</h1>
 </div>
 
 </body>

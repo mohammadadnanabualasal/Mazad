@@ -72,7 +72,7 @@ public class RealEstatesController {
         ad.setAdOwnerUserId(((UsersEntity)session.getAttribute("user")).getId());
         ad.setLastPrice(Double.parseDouble(parameterMap.get("initialPrice")[0]));
         ad.setLastBuyerUserId(null);
-        ad.setTypeId(RealEstatesEntity.realStateTypeTypeId);
+        ad.setTypeId(RealEstatesEntity.adTypeId);
         ad.setIsActive(false);
         ItemEntity.saveNewEntityInDB(ad);
 

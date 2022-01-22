@@ -15,7 +15,7 @@ public class OtherEntity extends ItemEntity{
     @Column(name = "ad_id")
     private int adId;
 
-    public static final int adTypeId = 3;
+    public static final int adTypeId = 5;
 
     public int getId() {
         return id;

@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="<spring:message code="html.dir"/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,28 +31,26 @@
 
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="text-left">
-                            <a href="/electrical/${electrical.getId()}" class="title-link">${electrical.getRelatedAdd().getTitle()}</a>
-                        </h3>
-                    </div>
+                    <h3 class="text-left">
+                        <a href="/electrical/${electrical.getId()}"
+                           class="title-link">${electrical.getRelatedAdd().getTitle()}</a>
+                    </h3>
                 </div>
                 <div class="row">
-                    <p><b>Country:</b> ${electrical.getRelatedAdd().getCountry()}</p>
+                    <p><b class="card-lable">Country:</b> <span
+                            class="card-lable-value">${electrical.getRelatedAdd().getCountry()}</span></p>
                 </div>
-                    <div class="row">
-                        <p><b>City:</b> <spring:message code="${electrical.getRelatedAdd().getCity()}"/></p>
-                    </div>
-                    <div class="row">
-                        <p><b>Last Price:</b> ${electrical.getRelatedAdd().getLastPrice()}</p>
-                    </div>
-                    <div class="row">
-                        <p><b> ${electrical.getRelatedAdd().getOwnerUser().getFirstName()} ${electrical.getRelatedAdd().getOwnerUser().getLastName()}</b></p>
-                    </div>
+                <div class="row">
+                    <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message
+                            code="${electrical.getRelatedAdd().getCity()}"/></span></p>
+                </div>
+                <div class="row">
+                    <p><b class="card-lable">Last Price:</b> <span
+                            class="card-lable-value">${electrical.getRelatedAdd().getLastPrice()}</span></p>
+                </div>
                 <div class="text-center">
                     <a href="/electrical/${electrical.getId()}" class="btn btn-primary">Go To</a>
                 </div>
-
             </div>
             <div class="col-md-4">
                 <div id="myCarousel-${electrical.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">

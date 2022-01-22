@@ -18,7 +18,7 @@ public class FurnitureEntity extends ItemEntity{
     @Column(name = "ad_id")
     private int adId;
 
-    public static final int adTypeId = 2;
+    public static final int adTypeId = 3;
 
     public int getId() {
         return id;

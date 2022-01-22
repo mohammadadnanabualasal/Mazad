@@ -87,9 +87,10 @@ public class UtilesController {
         double newPrice = Double.parseDouble(parameterMap.get("newPrice")[0]);
         String adId =parameterMap.get("adId")[0];
         AdsEntity ad = AdsEntity.getEntityById(adId);
-        //ad.setLastPrice(newPrice);
-        //ad.setLastBuyerUserId(((UsersEntity)session.getAttribute("user")).getId());
-       // AdsEntity.updateAd(ad, adId);
+        ad.setLastPrice(newPrice);
+        ad.setLastBuyerUserId(((UsersEntity)session.getAttribute("user")).getId());
+        ad.setLastBuyerUserId(((UsersEntity)session.getAttribute("user")).getId());
+        AdsEntity.updateAd(ad);
         return new ModelAndView("redirect:"+parameterMap.get("redirectUrl")[0]);
     }
 }

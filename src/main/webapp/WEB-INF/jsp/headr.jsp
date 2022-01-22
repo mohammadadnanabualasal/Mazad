@@ -30,6 +30,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/home"><spring:message code="main.page.label.website.home"/></a>
                 </li>
+                <c:if test="${user != null && user.isAdmin()}">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/action/adminTools">Admin tools</a>
+                    </li>
+                </c:if>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"><spring:message code="main.page.label.website.Post"/></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
