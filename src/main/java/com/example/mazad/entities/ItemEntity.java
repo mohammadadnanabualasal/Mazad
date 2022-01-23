@@ -61,7 +61,7 @@ public class ItemEntity {
         return -1;
     }
 
-    public static List<ItemEntity> getAllActiveCars() {
+    public static List<ItemEntity> getAllActiveAds() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<ItemEntity> entities = new ArrayList<>();
@@ -196,6 +196,34 @@ public class ItemEntity {
             return false;
         }
         return true;
+    }
+
+    public static List<ItemEntity> getAllActiveAdsOfUser(String id) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        List<ItemEntity> entities = new ArrayList<>();
+        String where = "WHERE ad_id IN (SELECT id FROM ADS WHERE ad_owner_user_id = " + id + ");";
+        Query query = entityManager.createNativeQuery("SELECT CARS.* FROM CARS " + where, CarsEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT ELECTRICALS.* FROM ELECTRICALS " + where, ElectricalEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT FURNITURE.* FROM FURNITURE " + where, FurnitureEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT REAL_ESTATES.* FROM REAL_ESTATES " + where, RealEstatesEntity.class);
+        entities.addAll(query.getResultList());
+        query = entityManager.createNativeQuery("SELECT OTHER_ITEMS.* FROM OTHER_ITEMS " + where, OtherEntity.class);
+        entities.addAll(query.getResultList());
+        entityManager.close();
+        entityManagerFactory.close();
+        List<ItemEntity> entities2 = new ArrayList<>();
+        for (ItemEntity entity : entities
+        ) {
+            if (!entity.getRelatedAdd().getIsActive())
+            {
+                entities2.add(entity);
+            }
+        }
+        return entities2;
     }
 
 }

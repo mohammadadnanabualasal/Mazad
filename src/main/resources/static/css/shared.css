@@ -1,5 +1,6 @@
 .container{
     margin-top: 50px!important;
+    width: 100%;
 }
 .container-fluid{
     padding-top: 50px;
@@ -57,4 +58,12 @@
 }
 .container-shadow{
     box-shadow: 1px 3px 7px;
+}
+.footer{
+    background-color: #f3f5f9;
+    margin-top: 200px;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }

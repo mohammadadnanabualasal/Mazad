@@ -23,7 +23,7 @@ public class AdminActionsController {
         }
 
         ModelAndView modelAndView = new ModelAndView("inactiveAds");
-        modelAndView.addObject("entities", ItemEntity.getAllActiveCars());
+        modelAndView.addObject("entities", ItemEntity.getAllActiveAds());
         return modelAndView;
     }
 
@@ -38,7 +38,7 @@ public class AdminActionsController {
 
         AdsEntity.enableAd(ItemEntity.getEntityById(id, Integer.parseInt(tableName)).getRelatedAdd().getId()+"");
         ModelAndView modelAndView = new ModelAndView("redirect:/action/inactiveAds");
-        modelAndView.addObject("entities", ItemEntity.getAllActiveCars());
+        modelAndView.addObject("entities", ItemEntity.getAllActiveAds());
         return modelAndView;
     }
 
@@ -54,7 +54,7 @@ public class AdminActionsController {
         ItemEntity.getEntityById(id, Integer.parseInt(typeId)).getRelatedAdd().deleteEntity();
         ItemEntity.getEntityById(id, Integer.parseInt(typeId)).deleteEntity();
         ModelAndView modelAndView = new ModelAndView("redirect:/action/inactiveAds");
-        modelAndView.addObject("entities", ItemEntity.getAllActiveCars());
+        modelAndView.addObject("entities", ItemEntity.getAllActiveAds());
         return modelAndView;
     }
 
@@ -67,7 +67,7 @@ public class AdminActionsController {
             return new ModelAndView("notAdmin");
         }
         ModelAndView modelAndView = new ModelAndView("adminTools");
-        modelAndView.addObject("entities", ItemEntity.getAllActiveCars());
+        modelAndView.addObject("entities", ItemEntity.getAllActiveAds());
         return modelAndView;
     }
 }

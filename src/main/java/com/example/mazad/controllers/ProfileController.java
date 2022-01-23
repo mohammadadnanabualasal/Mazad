@@ -1,5 +1,6 @@
 package com.example.mazad.controllers;
 
+import com.example.mazad.entities.ItemEntity;
 import com.example.mazad.entities.UsersEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ public class ProfileController {
         if (session.getAttribute("user") != null)
         {
             ModelAndView model = new ModelAndView("profile");
+            model.addObject("ads", ItemEntity.getAllActiveAdsOfUser(((UsersEntity)session.getAttribute("user")).getId()+""));
             model.addObject("userProfile",session.getAttribute("user"));
             return model;
 
@@ -30,6 +32,7 @@ public class ProfileController {
     public ModelAndView getProfilePage(@PathVariable(name = "id") String id)
     {
         ModelAndView model = new ModelAndView("othersProfiles");
+        model.addObject("ads", ItemEntity.getAllActiveAdsOfUser(id));
         model.addObject("userProfile", UsersEntity.getUserById(id));
         return model;
 
