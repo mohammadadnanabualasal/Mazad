@@ -218,7 +218,7 @@ public class ItemEntity {
         List<ItemEntity> entities2 = new ArrayList<>();
         for (ItemEntity entity : entities
         ) {
-            if (!entity.getRelatedAdd().getIsActive())
+            if (entity.getRelatedAdd().getIsActive())
             {
                 entities2.add(entity);
             }

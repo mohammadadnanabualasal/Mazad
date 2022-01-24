@@ -51,7 +51,6 @@
                             <div class="row">
                                 <p><b class="card-lable"><spring:message code="addCar.label.car_model"/>:</b> <span class="card-lable-value">${entity.getModel()}</span></p>
                             </div>
-                            <div class="xxx">
                                 <div class="row">
                                     <p><b class="card-lable"><spring:message code="addCar.label.year"/>:</b>  <span class="card-lable-value">${entity.getYear()}</span></p>
                                 </div>
@@ -83,7 +82,6 @@
                                     <p><b class="card-lable">Last Price:</b> <span
                                             class="card-lable-value">${entity.getRelatedAdd().getLastPrice()}</span></p>
                                 </div>
-                            </div>
                             <div class="text-center">
                                 <a href="/car/${entity.getId()}" class="btn btn-primary">Go To</a>
                             </div>
