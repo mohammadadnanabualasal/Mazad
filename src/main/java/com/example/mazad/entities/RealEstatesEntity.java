@@ -67,7 +67,7 @@ public class RealEstatesEntity extends ItemEntity{
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<RealEstatesEntity> realEstates = new ArrayList<>();
-        Query query = entityManager.createNativeQuery("SELECT * FROM  REAL_ESTATES" + ";", RealEstatesEntity.class);
+        Query query = entityManager.createNativeQuery("SELECT * FROM  REAL_ESTATES WHERE ad_id in (SELECT id FROM ADS WHERE is_active = 1);", RealEstatesEntity.class);
         realEstates = query.getResultList();
         entityManager.close();
         entityManagerFactory.close();

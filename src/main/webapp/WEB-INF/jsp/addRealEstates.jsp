@@ -41,17 +41,7 @@
                 <div class="form-group">
                     <h2 class="text-center"><spring:message code="addRealEstates.label"/></h2>
 
-                    <label for="title"><spring:message code="addRealEstates.label.ad_title"/></label>
-                    <textarea class="form-control" id="title" name="title"  rows="2" maxlength="100"></textarea>
-                    <br/>
-                    <label for="location"><spring:message code="addRealEstates.label.location"/></label>
-                    <select id="location"  class="form-control" name="location">
-                        <option value=""></option>
-                        <c:forEach var="i" begin="0" end="11">
-                            <option  value="${i}"><spring:message code="location.city.${i}"/></option>
-                        </c:forEach>
-                    </select>
-                    <br/>
+                    <c:import url="sharedInputFields.jsp"/>
                     <label> <spring:message code="addRealEstates.label.real_estate_type"/></label>
                     <select id="RealEstateType" name="RealEstateType" class="form-control">
                         <option selected></option>
@@ -61,17 +51,6 @@
                         <option value="4"><spring:message code="real_estate_type.Farm"/></option>
                         <option value="5"><spring:message code="real_estate_type.Commercial"/></option>
                     </select>
-                    <br/>
-                    <label for="firstPrice"><spring:message code="addRealEstates.label.initial_price"/> </label>
-                    <input type="number" id="firstPrice" name="initialPrice" min="0" max="2147483647">
-                    <br/>
-                    <br/>
-                    <label for="description"><spring:message code="addRealEstates.label.description"/></label>
-                    <textarea class="form-control" id="description" name="description" rows="5" maxlength="5000"></textarea>
-                    <br/>
-                    <label for="images"><spring:message code="addRealEstates.label.images"/></label>
-                    <br/>
-                    <input name="images" type="file" class="form-control-file" id="images" multiple="multiple" accept="image/png, image/gif, image/jpeg"/>
                     <br/>
                 </div>
                 <div class="col text-center">

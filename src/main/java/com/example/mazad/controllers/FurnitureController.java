@@ -62,6 +62,7 @@ public class FurnitureController {
         ad.setLastBuyerUserId(null);
         ad.setTypeId(FurnitureEntity.adTypeId);
         ad.setIsActive(false);
+        ad.setEndsAfter(Integer.parseInt(parameterMap.get("endsAfter")[0]));
         ItemEntity.saveNewEntityInDB(ad);
 
         FurnitureEntity furniture = new FurnitureEntity();

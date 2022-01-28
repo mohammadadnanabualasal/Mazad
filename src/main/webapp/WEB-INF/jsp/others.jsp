@@ -28,57 +28,64 @@
 
 <div class="container">
     <c:forEach items="${others}" var="other">
-    <div class="row card-strip">
+        <c:set var="ad" value="${other.getRelatedAdd()}"/>
+        <div class="row card-strip">
 
-        <div class="col-md-8">
-            <div class="row">
-                    <h3 class="text-left">
-                            <a href="/other/${other.getId()}" class="title-link">${other.getRelatedAdd().getTitle()}</a>
-                    </h3>
-            </div>
-            <div class="row">
-                <p><b class="card-lable">Country:</b> <span class="card-lable-value">${other.getRelatedAdd().getCountry()}</span></p>
-            </div>
-            <div class="row">
-                <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message code="${other.getRelatedAdd().getCity()}"/></span></p>
-            </div>
-            <div class="row">
-            <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${other.getRelatedAdd().getLastPrice()}</span></p>
-            </div>
-            <div class="text-center">
-                <a href="/other/${other.getId()}" class="btn btn-primary">Go To</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div id="myCarousel-${other.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <c:forEach var="path" items="${other.getRelatedAdd().getImagesPaths()}" varStatus = "status">
-                        <div class="item  ${status.first ?'active':'' }">
-                            <img class="img-car" src="${path}" style="width:100%;">
-                        </div>
-                    </c:forEach>
+            <div class="col-md-8">
+                <div class="row">
+                    <a class="profile-text" href="/profile/${ad.getOwnerUser().getId()}">
+                        <img src="/profileImage/${ad.getOwnerUser().getId()}" width="20" height="20"
+                             class="rounded-circle">
+                            ${ad.getOwnerUser().getFirstName()} ${ad.getOwnerUser().getLastName()}
+                    </a>
                 </div>
+                <div class="row">
+                        <h3 class="text-left">
+                                <a href="/other/${other.getId()}" class="title-link">${other.getRelatedAdd().getTitle()}</a>
+                        </h3>
+                </div>
+                <div class="row">
+                    <p><b class="card-lable">Country:</b> <span class="card-lable-value">${other.getRelatedAdd().getCountry()}</span></p>
+                </div>
+                <div class="row">
+                    <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message code="${other.getRelatedAdd().getCity()}"/></span></p>
+                </div>
+                <div class="row">
+                <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${other.getRelatedAdd().getLastPrice()}</span></p>
+                </div>
+                <div class="text-center">
+                    <a href="/other/${other.getId()}" class="btn btn-primary">Go To</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="myCarousel-${other.getRelatedAdd().getId()}" class="carousel slide" data-ride="carousel">
 
-                <!-- Left and right controls -->
-                <c:if test="${other.getRelatedAdd().getImagesPaths().size() > 1}">
-                    <a class="left carousel-control" href="#myCarousel-${other.getRelatedAdd().getId()}" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel-${other.getRelatedAdd().getId()}" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </c:if>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <c:forEach var="path" items="${other.getRelatedAdd().getImagesPaths()}" varStatus = "status">
+                            <div class="item  ${status.first ?'active':'' }">
+                                <img class="img-car" src="${path}" style="width:100%;">
+                            </div>
+                        </c:forEach>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <c:if test="${other.getRelatedAdd().getImagesPaths().size() > 1}">
+                        <a class="left carousel-control" href="#myCarousel-${other.getRelatedAdd().getId()}" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel-${other.getRelatedAdd().getId()}" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </c:if>
+                </div>
+                <h5 style="color: red">${ad.endIn()}</h5>
             </div>
         </div>
-    </div>
     </c:forEach>
-
-
-
+</div>
 <c:import url="footer.jsp"/>
 </body>
 </html>

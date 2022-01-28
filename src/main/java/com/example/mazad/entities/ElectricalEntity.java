@@ -90,7 +90,7 @@ public class ElectricalEntity extends ItemEntity{
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<ElectricalEntity> electrical = new ArrayList<>();
-        Query query = entityManager.createNativeQuery("SELECT * FROM  ELECTRICALS" + ";", ElectricalEntity.class);
+        Query query = entityManager.createNativeQuery("SELECT * FROM  ELECTRICALS WHERE ad_id in (SELECT id FROM ADS WHERE is_active = 1);", ElectricalEntity.class);
         electrical = query.getResultList();
         entityManager.close();
         entityManagerFactory.close();

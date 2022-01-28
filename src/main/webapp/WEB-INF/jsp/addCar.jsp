@@ -40,18 +40,7 @@
             <form role="form" method="post" action="/action/addCar" name="car" enctype="multipart/form-data">
                 <div class="form-group">
                     <h2 class="text-center"><spring:message code="addCar.label"/></h2>
-
-                    <label for="title"><spring:message code="addCar.label.ad_title"/></label>
-                    <textarea class="form-control" id="title" name="title"  rows="2" maxlength="100"></textarea>
-                    <br/>
-                    <label for="location"><spring:message code="addCar.label.location"/> </label>
-                    <select id="location"  class="form-control" name="location">
-                        <option value=""></option>
-                        <c:forEach var="i" begin="0" end="11">
-                            <option  value="${i}"><spring:message code="location.city.${i}"/></option>
-                        </c:forEach>
-                    </select>
-                    <br/>
+                    <c:import url="sharedInputFields.jsp"/>
                     <label><spring:message code="addCar.label.car_maker"/></label>
                     <select id="carMaker" name="carMaker" class="form-control">
                         <option selected></option>
@@ -91,9 +80,6 @@
                     <label for="kilometers"><spring:message code="addCar.label.kilometers"/></label>
                     <input  type="number" id="kilometers" name="kilometers" min="0" max="2147483647">
                     <br/>
-                    <label for="firstPrice"><spring:message code="addCar.label.initial_price"/></label>
-                    <input  type="number" id="firstPrice" name="initialPrice" min="0" max="2147483647">
-                    <br/>
                     <label for="Year"><spring:message code="addCar.label.year"/></label>
                     <input name="year" type="number" min="1970" max="2022" step="1" id="Year" value="2000"/>
                     <br/>
@@ -106,13 +92,6 @@
                         </c:forEach>
                     </select>
                     <br/>
-                    <br/>
-                    <label for="description"><spring:message code="addCar.label.description"/></label>
-                    <textarea class="form-control" id="description" name="description" rows="5" maxlength="5000"></textarea>
-                    <br/>
-                    <label for="images"><spring:message code="addCar.label.images"/></label>
-                    <br/>
-                    <input name="images" type="file" class="form-control-file" id="images" multiple="multiple" accept="image/png, image/gif, image/jpeg"/>
                     <br/>
                 </div>
                 <div class="col text-center">

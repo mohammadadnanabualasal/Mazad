@@ -28,9 +28,17 @@
 
 <div class="container">
     <c:forEach items="${electricals}" var="electrical">
+        <c:set var="ad" value="${electrical.getRelatedAdd()}"/>
         <div class="row card-strip">
 
             <div class="col-md-8">
+                <div class="row">
+                    <a class="profile-text" href="/profile/${ad.getOwnerUser().getId()}">
+                        <img src="/profileImage/${ad.getOwnerUser().getId()}" width="20" height="20"
+                             class="rounded-circle">
+                            ${ad.getOwnerUser().getFirstName()} ${ad.getOwnerUser().getLastName()}
+                    </a>
+                </div>
                 <div class="row">
                     <h3 class="text-left">
                         <a href="/electrical/${electrical.getId()}"
@@ -77,6 +85,7 @@
                         </a>
                     </c:if>
                 </div>
+                <h5 style="color: red">${ad.endIn()}</h5>
             </div>
         </div>
     </c:forEach>

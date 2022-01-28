@@ -7,10 +7,13 @@ import javax.persistence.Entity;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @Entity
 @Table(name = "ADS", schema = "Mazad", catalog = "")
@@ -48,7 +51,91 @@ public class AdsEntity extends ItemEntity{
     @Basic
     @Column(name = "city")
     private String city;
+    @Basic
+    @Column(name = "activationDate")
+    private Timestamp activationDate;
+    @Basic
+    @Column(name = "endsAfter")
+    private int endsAfter;
 
+    public static AdsEntity getEntityById(String id)
+    {
+        AdsEntity adsEntity;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = entityManager.createNativeQuery("SELECT * FROM  ADS WHERE id=" + id + ";", AdsEntity.class);
+            adsEntity = (AdsEntity) query.getResultList().get(0);
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return adsEntity;
+    }
+
+    public static boolean updateAd(AdsEntity a)
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            entityManager.merge(a);
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean enableAd(String adId)
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            AdsEntity ad = AdsEntity.getEntityById(adId);
+            ad.setIsActive(true);
+            ad.setActivationDate(new Timestamp(System.currentTimeMillis()));
+            entityManager.merge(ad);
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean deleteAd(String adId)
+    {
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            AdsEntity ad = AdsEntity.getEntityById(adId);
+            entityManager.remove(ad);
+            transaction.commit();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
     public int getId() {
         return id;
@@ -210,81 +297,38 @@ public class AdsEntity extends ItemEntity{
         }
     }
 
-    public static AdsEntity getEntityById(String id)
-    {
-        AdsEntity adsEntity;
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            Query query = entityManager.createNativeQuery("SELECT * FROM  ADS WHERE id=" + id + ";", AdsEntity.class);
-            adsEntity = (AdsEntity) query.getResultList().get(0);
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-        return adsEntity;
+    public Timestamp getActivationDate() {
+        return activationDate;
     }
 
-    public static boolean updateAd(AdsEntity a)
-    {
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            EntityTransaction transaction = entityManager.getTransaction();
-            transaction.begin();
-            entityManager.merge(a);
-            transaction.commit();
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    public void setActivationDate(Timestamp activationDate) {
+        this.activationDate = activationDate;
     }
 
-    public static boolean enableAd(String adId)
-    {
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            EntityTransaction transaction = entityManager.getTransaction();
-            transaction.begin();
-            AdsEntity ad = AdsEntity.getEntityById(adId);
-            ad.setIsActive(true);
-            entityManager.merge(ad);
-            transaction.commit();
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    public int getEndsAfter() {
+        return endsAfter;
     }
 
-    public static boolean deleteAd(String adId)
-    {
-        try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            EntityTransaction transaction = entityManager.getTransaction();
-            transaction.begin();
-            AdsEntity ad = AdsEntity.getEntityById(adId);
-            entityManager.remove(ad);
-            transaction.commit();
-            entityManager.close();
-            entityManagerFactory.close();
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    public void setEndsAfter(int endsAfter) {
+        this.endsAfter = endsAfter;
+    }
+
+    public String endIn() {
+        if (this.isActive){
+            LocalDateTime to = getActivationDate().toLocalDateTime().plusDays(getEndsAfter());
+            LocalDateTime from = (new Timestamp(System.currentTimeMillis())).toLocalDateTime();
+            if(from.isAfter(to)){
+                return "This AD has finished.";
+            }
+            LocalDateTime tempDateTime = LocalDateTime.from(from);
+            long days = tempDateTime.until(to, ChronoUnit.DAYS);
+            tempDateTime = tempDateTime.plusDays(days);
+            long hours = tempDateTime.until(to, ChronoUnit.HOURS);
+            tempDateTime = tempDateTime.plusHours(hours);
+
+            long minutes = tempDateTime.until(to, ChronoUnit.MINUTES);
+            String remainingTime = "This Ad End Within: "+days + " days " + hours + " hours " + minutes + " minutes.";
+            return remainingTime;
+        }else {return "This Ad is not active yet, the Admins will activate it soon.";}
     }
 }

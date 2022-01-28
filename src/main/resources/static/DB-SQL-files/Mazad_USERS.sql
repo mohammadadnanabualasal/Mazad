@@ -47,7 +47,7 @@ CREATE TABLE `USERS` (
 
 LOCK TABLES `USERS` WRITE;
 /*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
-INSERT INTO `USERS` VALUES (1,'Mohammad','Abu','Abualasal','naeem@gmail.com',1111111111111,'12345','Jordan','Amman',797129285,2),(2,'Mohammad','Adnan','Abualasal','mohammad.adnan.abualasal@gmail.com',8888888888,'12345','Jordan','Amman',962797129223,1);
+INSERT INTO `USERS` VALUES (1,'Mohammad','Abu','Abualasal','naeem@gmail.com',1111111111111,'12345','Jordan','Amman',797129285,2),(2,'Mohammad','Adnan','Abualasal','mohammad.adnan.abualasal@gmail.com',8888888888,'12345','Jordan','Amman',962797129223,1),(3,'M','x','A','naeem2@gmail.com',777777777777,'12345','Jordan','Amman',797129285,1);
 /*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-23 21:12:06
+-- Dump completed on 2022-01-28 18:34:08

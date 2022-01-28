@@ -22,7 +22,13 @@
     <title lang="ar"><spring:message code="profilepage.titel"/></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+    <script>
+        function changImage(){
+            document.getElementById("imageForm").submit();
+        }
+    </script>
 
 </head>
 <body>
@@ -38,7 +44,9 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-5 form-group">
-                        <input type="file" class="form-control-file" id="#" multiple>
+                        <form id="imageForm" action="/addProfilePicture" method="post" enctype="multipart/form-data">
+                            <input id="imageFile" name="imageFile" type="file" class="form-control-file" multiple onchange="changImage()">
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -176,17 +184,14 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-4"></div>
                                 <div class="col-5">
                                     <div class="text-center">
                                         <a href="/action/deleteAd/${entity.getRelatedAdd().getTypeId()}/${entity.getId()}" class="btn btn-primary"
                                            style="background-color: red;">Delete</a>
                                     </div>
                                 </div>
-                                <div class="col-5">
-                                    <div class="text-center">
-                                        <a href="/action/enableAd/${entity.getRelatedAdd().getTypeId()}/${entity.getId()}" class="btn btn-primary">Enable</a>
-                                    </div>
-                                </div>
+                                <div class="col-3"></div>
                             </div>
                         </div>
                     </div>
@@ -215,6 +220,7 @@
                                 </a>
                             </c:if>
                         </div>
+                        <h5 style="color: red;font-size: 14px;">${entity.getRelatedAdd().endIn()}</h5>
                     </div>
                 </div>
             </c:forEach>

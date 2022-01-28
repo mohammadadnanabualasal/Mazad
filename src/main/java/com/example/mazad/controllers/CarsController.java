@@ -86,6 +86,7 @@ public class CarsController {
         adsEntity.setTypeId(CarsEntity.adTypeId);
         adsEntity.setAdOwnerUserId(((UsersEntity)session.getAttribute("user")).getId());
         adsEntity.setIsActive(false);
+        adsEntity.setEndsAfter(Integer.parseInt(parameterMap.get("endsAfter")[0]));
         entityManager.persist(adsEntity);
         transaction.commit();
 

@@ -79,7 +79,7 @@ public class FurnitureEntity extends ItemEntity{
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<FurnitureEntity> furnitures = new ArrayList<>();
-        Query query = entityManager.createNativeQuery("SELECT * FROM  FURNITURE" + ";", FurnitureEntity.class);
+        Query query = entityManager.createNativeQuery("SELECT * FROM  FURNITURE WHERE ad_id in (SELECT id FROM ADS WHERE is_active = 1);", FurnitureEntity.class);
         furnitures = query.getResultList();
         entityManager.close();
         entityManagerFactory.close();

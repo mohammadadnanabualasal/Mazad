@@ -198,11 +198,12 @@ public class ItemEntity {
         return true;
     }
 
-    public static List<ItemEntity> getAllActiveAdsOfUser(String id) {
+    public static List<ItemEntity> getAllAdsOfUser(String id, boolean active) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<ItemEntity> entities = new ArrayList<>();
-        String where = "WHERE ad_id IN (SELECT id FROM ADS WHERE ad_owner_user_id = " + id + ");";
+        String isActive= active?" AND is_active=1 ":"";
+        String where = "WHERE ad_id IN (SELECT id FROM ADS WHERE ad_owner_user_id = " + id + isActive+");";
         Query query = entityManager.createNativeQuery("SELECT CARS.* FROM CARS " + where, CarsEntity.class);
         entities.addAll(query.getResultList());
         query = entityManager.createNativeQuery("SELECT ELECTRICALS.* FROM ELECTRICALS " + where, ElectricalEntity.class);
@@ -215,15 +216,7 @@ public class ItemEntity {
         entities.addAll(query.getResultList());
         entityManager.close();
         entityManagerFactory.close();
-        List<ItemEntity> entities2 = new ArrayList<>();
-        for (ItemEntity entity : entities
-        ) {
-            if (!entity.getRelatedAdd().getIsActive())
-            {
-                entities2.add(entity);
-            }
-        }
-        return entities2;
+        return entities;
     }
 
 }

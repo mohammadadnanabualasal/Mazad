@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/rtl.css">
     <link href="/css/shared.css" rel="stylesheet">
     <link href="/css/cars.css" rel="stylesheet">
+    <link href="/css/imageViwer.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -57,7 +58,14 @@
                             <c:forEach var="path" items="${car.getRelatedAdd().getImagesPaths()}"
                                        varStatus="status">
                                 <div class="item  ${status.first ?'active':'' }">
-                                    <img class="img-car" src="${path}" style="width:100%;">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8 popup">
+                                            <img class="img-car" src="${path}" id="img${car.getId()}" style="width:100%;"
+                                                 onclick="popup()">
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
                                 </div>
                             </c:forEach>
                         </div>

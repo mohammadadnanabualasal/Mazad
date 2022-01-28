@@ -68,7 +68,7 @@ public class OtherEntity extends ItemEntity{
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<OtherEntity> others = new ArrayList<>();
-        Query query = entityManager.createNativeQuery("SELECT * FROM  OTHER_ITEMS" + ";", OtherEntity.class);
+        Query query = entityManager.createNativeQuery("SELECT * FROM  OTHER_ITEMS WHERE ad_id in (SELECT id FROM ADS WHERE is_active = 1);", OtherEntity.class);
         others = query.getResultList();
         entityManager.close();
         entityManagerFactory.close();

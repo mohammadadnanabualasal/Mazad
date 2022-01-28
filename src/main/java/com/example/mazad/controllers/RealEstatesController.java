@@ -74,6 +74,7 @@ public class RealEstatesController {
         ad.setLastBuyerUserId(null);
         ad.setTypeId(RealEstatesEntity.adTypeId);
         ad.setIsActive(false);
+        ad.setEndsAfter(Integer.parseInt(parameterMap.get("endsAfter")[0]));
         ItemEntity.saveNewEntityInDB(ad);
 
         RealEstatesEntity realEstates = new RealEstatesEntity();

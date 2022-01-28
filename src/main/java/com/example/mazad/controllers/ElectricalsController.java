@@ -72,6 +72,7 @@ public class ElectricalsController {
         ad.setLastBuyerUserId(null);
         ad.setTypeId(ElectricalEntity.adTypeId);
         ad.setIsActive(false);
+        ad.setEndsAfter(Integer.parseInt(parameterMap.get("endsAfter")[0]));
         ItemEntity.saveNewEntityInDB(ad);
 
         ElectricalEntity electrical = new ElectricalEntity();

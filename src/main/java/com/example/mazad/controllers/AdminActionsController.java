@@ -45,15 +45,19 @@ public class AdminActionsController {
     @GetMapping(value = "/action/deleteAd/{typeId}/{id}")
     public ModelAndView deleteAd(HttpSession session, @PathVariable(name = "id") String id, @PathVariable(name = "typeId") String typeId)
     {
+        String redirectUrl="/action/inactiveAds";
         UsersEntity user = (UsersEntity) session.getAttribute("user");
-        if (user == null || user.getUserType() != 2)
-        {
-            return new ModelAndView("notAdmin");
+        if (user != null && !user.equals(ItemEntity.getEntityById(id, Integer.parseInt(typeId)).getRelatedAdd().getOwnerUser())) {
+            if (user == null || user.getUserType() != 2) {
+                return new ModelAndView("notAdmin");
+            }
+        }else {
+            redirectUrl = "/profile";
         }
 
         ItemEntity.getEntityById(id, Integer.parseInt(typeId)).getRelatedAdd().deleteEntity();
         ItemEntity.getEntityById(id, Integer.parseInt(typeId)).deleteEntity();
-        ModelAndView modelAndView = new ModelAndView("redirect:/action/inactiveAds");
+        ModelAndView modelAndView = new ModelAndView("redirect:"+redirectUrl);
         modelAndView.addObject("entities", ItemEntity.getAllActiveAds());
         return modelAndView;
     }

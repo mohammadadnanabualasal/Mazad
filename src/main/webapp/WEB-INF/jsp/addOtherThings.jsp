@@ -41,35 +41,13 @@
                 <div class="form-group">
                     <h2 class="text-center"><spring:message code="addOtherThings.label"/></h2>
                     <br/>
-                    <label for="title"><spring:message code="addOtherThings.label.ad_title"/></label>
-                    <textarea class="form-control" id="title" name="title"  rows="2" maxlength="100"></textarea>
-                    <br/>
-                    <label for="location"><spring:message code="addOtherThings.label.location"/></label>
-                    <select id="location"  class="form-control" name="location">
-                        <option value=""></option>
-                        <c:forEach var="i" begin="0" end="11">
-                            <option  value="${i}"><spring:message code="location.city.${i}"/></option>
-                        </c:forEach>
-                    </select>
-                    <br/>
+                    <c:import url="sharedInputFields.jsp"/>
                     <label><spring:message code="addOtherThings.label.condition"/></label>
                     <select id="condition" name="condition" class="form-control">
                         <option selected></option>
                         <option value="1"><spring:message code="condition.new"/></option>
                         <option value="2"><spring:message code="condition.used"/></option>
                     </select>
-                    <br/>
-                    <label for="firstPrice"><spring:message code="addOtherThings.label.initial_price"/></label>
-                    <input type="number" id="firstPrice" name="initialPrice" min="0" max="2147483647">
-                    <br/>
-                    <br/>
-                    <label for="description"><spring:message code="addOtherThings.label.description"/></label>
-                    <textarea class="form-control" id="description" name="description" rows="5" maxlength="5000"></textarea>
-                    <br/>
-                    <label for="images"><spring:message code="addOtherThings.label.images"/></label>
-                    <br/>
-                    <input name="images" type="file" class="form-control-file" id="images" multiple="multiple" accept="image/png, image/gif, image/jpeg"/>
-                    <br/>
                 </div>
                 <div class="col text-center">
                     <button type="submit" class="btn btn-primary center-col"><spring:message code="addOtherThings.label.submit"/></button>

@@ -65,6 +65,7 @@ public class OtherThingsController {
         ad.setLastBuyerUserId(null);
         ad.setTypeId(OtherEntity.adTypeId);
         ad.setIsActive(false);
+        ad.setEndsAfter(Integer.parseInt(parameterMap.get("endsAfter")[0]));
         ItemEntity.saveNewEntityInDB(ad);
 
         OtherEntity other = new OtherEntity();

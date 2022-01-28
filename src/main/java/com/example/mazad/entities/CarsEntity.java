@@ -48,7 +48,7 @@ public class CarsEntity extends ItemEntity{
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<CarsEntity> cars = new ArrayList<>();
-        Query query = entityManager.createNativeQuery("SELECT * FROM " + "CARS" + ";", CarsEntity.class);
+        Query query = entityManager.createNativeQuery("SELECT * FROM CARS WHERE ad_id in (SELECT id FROM ADS WHERE is_active = 1);", CarsEntity.class);
         cars = query.getResultList();
         entityManager.close();
         entityManagerFactory.close();
