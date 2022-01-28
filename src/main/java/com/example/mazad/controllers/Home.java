@@ -1,6 +1,7 @@
 package com.example.mazad.controllers;
 
 import com.example.mazad.DBConnection.MysqlCon;
+import com.example.mazad.entities.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,22 +40,16 @@ public class Home {
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             Query query = entityManager.createNativeQuery("SELECT * FROM CARS");
-            int cars =  query.getResultList().size();
+            int cars = CarsEntity.getAllCars().size();
             ads.put("cars",cars+"");
-            query = entityManager.createNativeQuery("SELECT * FROM FURNITURE");
-            int furniture =  query.getResultList().size();
+            int furniture = FurnitureEntity.getAllFurnitures().size();
             ads.put("furniture",furniture+"");
-            query = entityManager.createNativeQuery("SELECT * FROM ELECTRICALS");
-            int electricals =  query.getResultList().size();
+            int electricals = ElectricalEntity.getAllElectricals().size();
             ads.put("electricals",electricals+"");
-            query = entityManager.createNativeQuery("SELECT * FROM REAL_ESTATES");
-            int realEstates =  query.getResultList().size();
+            int realEstates = RealEstatesEntity.getAllreal_Estates().size();
             ads.put("realEstates",realEstates+"");
-            query = entityManager.createNativeQuery("SELECT * FROM OTHER_ITEMS");
-            int others =  query.getResultList().size();
+            int others = OtherEntity.getAllothers().size();
             ads.put("others",others+"");
-            entityManager.close();
-            entityManagerFactory.close();
         }catch (Exception exception)
         {
             return ads;

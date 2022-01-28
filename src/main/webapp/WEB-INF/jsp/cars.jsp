@@ -52,10 +52,11 @@
                             <div class="row">
                                 <p><b class="card-lable"><spring:message code="addCar.label.car_model"/>:</b> <span class="card-lable-value">${entity.getModel()}</span></p>
                             </div>
-                            <div class="row">
-                                <p><b class="card-lable"><spring:message code="addCar.label.year"/>:</b>  <span class="card-lable-value">${entity.getYear()}</span></p>
-                            </div>
-                            <div class="row">
+                            <div class="xxx">
+                                <div class="row">
+                                    <p><b class="card-lable"><spring:message code="addCar.label.year"/>:</b>  <span class="card-lable-value">${entity.getYear()}</span></p>
+                                </div>
+                                <div class="row">
 
                                 <p><b class="card-lable"><spring:message code="addCar.label.transmission_type"/>:</b> <span class="card-lable-value"><spring:message code="transmission_type.${entity.getTransmission_type()}"/></span></p>
 
@@ -77,15 +78,12 @@
                             </div>
                             <div class="row">
 
-                                <p><b class="card-lable"><spring:message code="addCar.label.kilometers"/>:</b> <span class="card-lable-value">${entity.getKilometers()}</span></p>
-                            </div>
-                            <div class="row">
-                                <p><b class="card-lable">Last Price:</b> <span
-                                        class="card-lable-value">${ad.getLastPrice()}</span></p>
-                            </div>
-                            <div class="row">
-                                <p><b class="card-lable">This Ad end in:</b> <span
-                                        class="card-lable-value">${ad.endIn()}</span></p>
+                                    <p><b class="card-lable"><spring:message code="addCar.label.kilometers"/>:</b> <span class="card-lable-value">${entity.getKilometers()}</span></p>
+                                </div>
+                                <div class="row">
+                                    <p><b class="card-lable">Last Price:</b> <span
+                                            class="card-lable-value">${entity.getRelatedAdd().getLastPrice()}</span></p>
+                                </div>
                             </div>
                             <div class="text-center">
                                 <a href="/car/${entity.getId()}" class="btn btn-primary">Go To</a>

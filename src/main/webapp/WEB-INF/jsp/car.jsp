@@ -130,6 +130,10 @@
                         <p><b><spring:message code="addCar.label.kilometers"/>:</b> ${car.getKilometers()}</p>
                     </div>
                     <div class="row">
+                        <p><b class="card-lable"><spring:message
+                                code="electricals.label.last_price"/> </b>${car.getRelatedAdd().getLastPrice()}</p>
+                    </div>
+                    <div class="row">
                         <p><b><spring:message code="addCar.label.description"/>:</b> ${car.getRelatedAdd().getAdDescription()}</p>
                         <br/>
                     </div>
