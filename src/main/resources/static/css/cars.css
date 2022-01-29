@@ -83,14 +83,8 @@
     text-decoration: none !important;
     text-transform: uppercase;
 }
-.card-lable{
-    font-size: large;
-    color: gray;
-}
-.card-lable-value{
-    font-weight: bold;
-    font-style: italic;
-}
+
+
 .profile-text{
     color: black;
     text-decoration: none !important;

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title lang="ar"><spring:message code="carspage.titel"/></title>
+    <title lang="ar"><spring:message code="adminpage.titel"/></title>
 
 </head>
 <body>
@@ -49,11 +49,11 @@
                             </h3>
                         </div>
                         <div class="row">
-                            <p><b class="card-lable">Country:</b> <span
+                            <p><b class="card-lable"><spring:message code="electrical.label.country"/></b> <span
                                     class="card-lable-value">${entity.getRelatedAdd().getCountry()}</span></p>
                         </div>
                         <div class="row">
-                            <p><b class="card-lable">City:</b> <span
+                            <p><b class="card-lable"><spring:message code="electrical.label.city"/></b> <span
                                     class="card-lable-value">${entity.getRelatedAdd().getCity()}</span></p>
                         </div>
 
@@ -106,7 +106,7 @@
                             </div>
                         </c:if>
                         <div class="row">
-                            <p><b class="card-lable">Last Price:</b> <span
+                            <p><b class="card-lable"><spring:message code="electricals.label.last_price"/></b> <span
                                     class="card-lable-value">${entity.getRelatedAdd().getLastPrice()}</span></p>
                         </div>
 

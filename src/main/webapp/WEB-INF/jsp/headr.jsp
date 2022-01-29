@@ -32,7 +32,7 @@
                 </li>
                 <c:if test="${user != null && user.isAdmin()}">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/action/adminTools">Admin tools</a>
+                        <a class="nav-link active" href="/action/adminTools"><spring:message code="headr.admin_tools"/></a>
                     </li>
                 </c:if>
                 <li class="nav-item dropdown">

@@ -1,6 +1,10 @@
 package com.example.mazad.entities;
 
 import com.example.mazad.controllers.UtilesController;
+import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.MessageSource;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -16,8 +20,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Entity
+
 @Table(name = "ADS", schema = "Mazad", catalog = "")
 public class AdsEntity extends ItemEntity{
+
     @Id
     @Column(name = "id")
     private int id;
@@ -57,9 +63,10 @@ public class AdsEntity extends ItemEntity{
     @Basic
     @Column(name = "endsAfter")
     private int endsAfter;
-
+    
     public static AdsEntity getEntityById(String id)
     {
+
         AdsEntity adsEntity;
         try {
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");

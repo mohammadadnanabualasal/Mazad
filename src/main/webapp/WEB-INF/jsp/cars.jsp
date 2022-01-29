@@ -35,8 +35,7 @@
                     <div class="col-md-8">
                         <div class="row">
                             <a class="profile-text" href="/profile/${ad.getOwnerUser().getId()}">
-                                <img src="/profileImage/${ad.getOwnerUser().getId()}" width="20" height="20"
-                                     class="rounded-circle">
+                                <img src="/profileImage/${ad.getOwnerUser().getId()}" width="20" height="20" class="rounded-circle">
                                     ${ad.getOwnerUser().getFirstName()} ${ad.getOwnerUser().getLastName()}
                             </a>
                         </div>
@@ -72,21 +71,20 @@
 
                             </div>
                             <div class="row">
-
                                 <p><b class="card-lable"><spring:message code="addCar.label.car_condition"/>:</b> <span class="card-lable-value"><spring:message code="car_condition.${entity.getCar_condition()}"/></span></p>
+                            </div>
 
                             </div>
                             <div class="row">
 
-                                    <p><b class="card-lable"><spring:message code="addCar.label.kilometers"/>:</b> <span class="card-lable-value">${entity.getKilometers()}</span></p>
-                                </div>
-                                <div class="row">
-                                    <p><b class="card-lable">Last Price:</b> <span
-                                            class="card-lable-value">${entity.getRelatedAdd().getLastPrice()}</span></p>
-                                </div>
+                                <p><b class="card-lable"><spring:message code="addCar.label.kilometers"/>:</b> <span class="card-lable-value">${entity.getKilometers()}</span></p>
+
+                            </div>
+                            <div class="row">
+                                <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${entity.getRelatedAdd().getLastPrice()}</span></p>
                             </div>
                             <div class="text-center">
-                                <a href="/car/${entity.getId()}" class="btn btn-primary">Go To</a>
+                                <a href="/car/${entity.getId()}" class="btn btn-primary"><spring:message code="open.btn"/></a>
                             </div>
                         </div>
                     </div>

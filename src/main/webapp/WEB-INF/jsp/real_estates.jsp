@@ -45,16 +45,16 @@
                     </h3>
             </div>
             <div class="row">
-                <p><b class="card-lable">Country:</b> <span class="card-lable-value">${realEstate.getRelatedAdd().getCountry()}</span></p>
+                <p><b class="card-lable"><spring:message code="electrical.label.country"/> </b> <span class="card-lable-value">${realEstate.getRelatedAdd().getCountry()}</span></p>
             </div>
             <div class="row">
-                <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message code="${realEstate.getRelatedAdd().getCity()}"/></span></p>
+                <p><b class="card-lable"><spring:message code="electrical.label.city"/> </b> <span class="card-lable-value"><spring:message code="${realEstate.getRelatedAdd().getCity()}"/></span></p>
             </div>
             <div class="row">
-                <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${realEstate.getRelatedAdd().getLastPrice()}</span></p>
+                <p><b class="card-lable"><spring:message code="electricals.label.last_price"/></b> <span class="card-lable-value">${realEstate.getRelatedAdd().getLastPrice()}</span></p>
             </div>
             <div class="text-center">
-                <a href="/realEstate/${realEstate.getId()}" class="btn btn-primary">Go To</a>
+                <a href="/realEstate/${realEstate.getId()}" class="btn btn-primary"><spring:message code="open.btn"/></a>
             </div>
         </div>
         <div class="col-md-4">

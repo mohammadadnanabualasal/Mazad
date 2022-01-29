@@ -45,16 +45,16 @@
                         </h3>
                 </div>
                 <div class="row">
-                    <p><b class="card-lable">Country:</b> <span class="card-lable-value">${other.getRelatedAdd().getCountry()}</span></p>
+                    <p><b class="card-lable"><spring:message code="electrical.label.country"/></b> <span class="card-lable-value">${other.getRelatedAdd().getCountry()}</span></p>
                 </div>
                 <div class="row">
-                    <p><b class="card-lable">City:</b> <span class="card-lable-value"><spring:message code="${other.getRelatedAdd().getCity()}"/></span></p>
+                    <p><b class="card-lable"><spring:message code="electrical.label.city"/></b> <span class="card-lable-value"><spring:message code="${other.getRelatedAdd().getCity()}"/></span></p>
                 </div>
                 <div class="row">
-                <p><b class="card-lable">Last Price:</b> <span class="card-lable-value">${other.getRelatedAdd().getLastPrice()}</span></p>
+                <p><b class="card-lable"><spring:message code="electricals.label.last_price"/></b> <span class="card-lable-value">${other.getRelatedAdd().getLastPrice()}</span></p>
                 </div>
                 <div class="text-center">
-                    <a href="/other/${other.getId()}" class="btn btn-primary">Go To</a>
+                    <a href="/other/${other.getId()}" class="btn btn-primary"><spring:message code="open.btn"/></a>
                 </div>
             </div>
             <div class="col-md-4">

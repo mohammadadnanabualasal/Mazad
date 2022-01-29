@@ -6,7 +6,8 @@
 </script>
 <!DOCTYPE html>
 <html lang="en" dir="<spring:message code="html.dir"/>">
-<head><link rel="icon" href="/x/jm-logo.jpeg">
+<head>
+    <link rel="icon" href="/x/jm-logo.jpeg">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title lang="ar"><spring:message code="carspage.titel"/></title>
+    <title lang="ar"><spring:message code="adminpage.titel"/></title>
 
 </head>
 <body>
@@ -31,7 +32,7 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-                <a class="title-link" href="/action/inactiveAds">Inactive Ads ></a>
+                <a class="title-link" href="/action/inactiveAds"><spring:message code="admin.inactive"/>></a>
             </div>
         </div>
         <div class="col-md-3">

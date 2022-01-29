@@ -13,10 +13,10 @@
 </select>
 <br/>
 <label for="firstPrice"><spring:message code="addCar.label.initial_price"/></label>
-<input  type="number" id="firstPrice" name="initialPrice" min="0" max="2147483647" value="1" placeholder="1">JOD
+<input  type="number" id="firstPrice" name="initialPrice" min="0" max="2147483647" value="1" placeholder="1"><spring:message code="sharedInputFields.jod"/>
 <br/>
 <label for="firstPrice"><spring:message code="addCar.label.endsafetr"/></label>
-<input type="number" id="endsAfter" name="endsAfter" min="1" max="7" value="1" placeholder="1">Days
+<input type="number" id="endsAfter" name="endsAfter" min="1" max="7" value="1" placeholder="1"><spring:message code="sharedInputFields.days"/>
 <br/>
 <label for="description"><spring:message code="addCar.label.description"/></label>
 <textarea class="form-control" id="description" name="description" rows="5" maxlength="5000"></textarea>
