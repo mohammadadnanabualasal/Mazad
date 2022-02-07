@@ -54,7 +54,7 @@
                         </div>
                         <div class="row">
                             <p><b class="card-lable"><spring:message code="electrical.label.city"/></b> <span
-                                    class="card-lable-value">${entity.getRelatedAdd().getCity()}</span></p>
+                                    class="card-lable-value"><spring:message code="${entity.getRelatedAdd().getCity()}"/></span></p>
                         </div>
 
                         <c:if test="${entity.getClass() eq 'class com.example.mazad.entities.CarsEntity'}">

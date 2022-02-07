@@ -27,12 +27,10 @@ import java.util.Map;
 public class CarsController {
 
     @GetMapping(value = "/cars")
-    public ModelAndView getCarsPage(Model model)
+    public ModelAndView getCarsPage()
     {
-        ModelAndView modelAndView = new ModelAndView("model");
-        model.addAttribute("cars", CarsEntity.getAllCars());
-        modelAndView.addObject("model",model);
-        modelAndView.setViewName("cars");
+        ModelAndView modelAndView = new ModelAndView("cars");
+        modelAndView.addObject("cars", CarsEntity.getAllCars());
         return modelAndView;
     }
 
@@ -43,18 +41,15 @@ public class CarsController {
         {
             return new ModelAndView("redirect:/login");
         }
-        ModelAndView modelAndView = new ModelAndView("model");
-        modelAndView.addObject("model",model);
-        modelAndView.setViewName("addCar");
+        ModelAndView modelAndView = new ModelAndView("addCar");
         return modelAndView;
     }
 
     @GetMapping(value = "/car/{carId}")
     public ModelAndView getCarEntityPage(@PathVariable("carId") String id)
     {
-        ModelAndView modelAndView = new ModelAndView("model");
+        ModelAndView modelAndView = new ModelAndView("car");
         modelAndView.addObject("car", CarsEntity.getCarById(id));
-        modelAndView.setViewName("car");
         return modelAndView;
     }
 
@@ -79,7 +74,7 @@ public class CarsController {
         adsEntity.setTitle(parameterMap.get("title")[0]);
         adsEntity.setInitialPrice(Double.parseDouble(parameterMap.get("initialPrice")[0].toString()));
         adsEntity.setAdDescription(parameterMap.get("description")[0]);
-        adsEntity.setCity(AppConfiguration.messageSource().getMessage("location.city."+parameterMap.get("location")[0],null,null));
+        adsEntity.setCity("location.city." + parameterMap.get("location")[0]);
         adsEntity.setCountry("Jordan");
         adsEntity.setLastPrice(Double.parseDouble(parameterMap.get("initialPrice")[0]));
         adsEntity.setLastBuyerUserId(null);

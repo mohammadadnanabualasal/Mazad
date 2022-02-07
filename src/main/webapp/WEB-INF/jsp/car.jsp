@@ -126,6 +126,10 @@
 
                     </div>
                     <div class="row">
+                        <p><b><spring:message code="create.page.city"/>:</b> <spring:message code="${car.getRelatedAdd().getCity()}"/></p>
+                        <br/>
+                    </div>
+                    <div class="row">
 
                         <p><b><spring:message code="addCar.label.kilometers"/>:</b> ${car.getKilometers()}</p>
                     </div>

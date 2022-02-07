@@ -25,7 +25,9 @@
 </head>
 <body>
 <c:import url="headr.jsp"/>
-
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
 <div class="container">
     <c:forEach items="${furnitures}" var="furniture">
         <c:set var="ad" value="${furniture.getRelatedAdd()}"/>
@@ -88,7 +90,9 @@
     </div>
     </c:forEach>
 </div>
-
+    </div>
+    <div class="col-3"></div>
+</div>
 <c:import url="footer.jsp"/>
 </body>
 </html>

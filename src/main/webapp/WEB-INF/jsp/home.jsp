@@ -32,11 +32,10 @@
         <div class="container cards-continer">
             <div class="row">
                 <div class="col-sm-4 p-1">
-                    <div class="card shadow  mb-5 bg-body rounded" onclick="location.href='/furnitures';"
-                         >
+                    <div class="card shadow  mb-5 bg-body rounded" onclick="location.href='/furnitures';">
                         <img src="/x/furniture.jpg" class="card-img-top imgx" alt="...">
                         <div class="card-body">
-                            ${model.getAttribute("adsCount").get("furniture")}
+                            ${adsCount.get("furniture")}
                             <h3 class="card-title" dir="rtl"><spring:message code="main.page.label.furniture"/></h3>
                         </div>
                     </div>
@@ -46,7 +45,7 @@
                          >
                         <img src="/x/electrical.jpg" class="card-img-top imgx" alt="...">
                         <div class="card-body">
-                            ${model.getAttribute("adsCount").get("electricals")}
+                            ${adsCount.get("electricals")}
                             <h3 class="card-title"><spring:message code="main.page.label.electrical"/></h3>
 
                         </div>
@@ -57,7 +56,7 @@
                          >
                         <img src="/x/cars.jpg" class="card-img-top imgx" alt="...">
                         <div class="card-body">
-                            ${model.getAttribute("adsCount").get("cars")}
+                            ${adsCount.get("cars")}
                             <h3 class="card-title"><spring:message code="main.page.label.cars"/></h3>
 
                         </div>
@@ -70,7 +69,7 @@
                          >
                         <img src="/x/real-estate.jpg" class="card-img-top imgx" alt="...">
                         <div class="card-body">
-                            ${model.getAttribute("adsCount").get("realEstates")}
+                            ${adsCount.get("realEstates")}
                             <h3 class="card-title"><spring:message code="main.page.label.real-estate"/></h3>
 
                         </div>
@@ -81,7 +80,7 @@
                          >
                         <img src="/x/other_things.png" class="card-img-top imgx" alt="...">
                         <div class="card-body">
-                            ${model.getAttribute("adsCount").get("others")}
+                            ${adsCount.get("others")}
                             <h3 class="card-title"><spring:message code="main.page.label.other_things"/></h3>
                         </div>
                     </div>

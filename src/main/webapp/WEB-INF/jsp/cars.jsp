@@ -29,7 +29,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <div class="container">
-            <c:forEach items="${model.getAttribute('cars')}" var="entity">
+            <c:forEach items="${cars}" var="entity">
                 <c:set var="ad" value="${entity.getRelatedAdd()}"/>
                 <div class="row card-strip">
                     <div class="col-md-8">

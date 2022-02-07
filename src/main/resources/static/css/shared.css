@@ -12,11 +12,7 @@
     box-shadow: 1px 3px 9px;
 }
 
-.li-center{
-    margin: auto;
-    color: white;
 
-}
 
 
 @media screen and (max-width: 1012px) {
@@ -41,17 +37,7 @@
         margin-left: 0px
     }
 }
-.row.header {
-    background-color: #1d2124 !important;
-    padding: 10px;
-    margin-bottom: 50px;
-    font-size: 18px;
-    box-shadow: 1px 2px 5px black;
-    top: 0;
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-}
+
 .image-center{
     margin: auto;
     padding-bottom: 50px;
@@ -68,7 +54,7 @@ html, body {
     overflow-x: hidden;
 }
 h1{
-    color: #396;
+    color: #4e555b;
     font-weight: 100;
     font-size: 40px;
     margin: 40px 0px 20px;

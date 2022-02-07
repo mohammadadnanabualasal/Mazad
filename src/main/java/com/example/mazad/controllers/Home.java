@@ -22,13 +22,10 @@ public class Home {
 
 
     @GetMapping(value={"/home", "/"} )
-    public ModelAndView getHomePage(Model model)
+    public ModelAndView getHomePage()
     {
-        ModelAndView modelAndView = new ModelAndView();
-        int x = MysqlCon.getRowsCount("SELECT * FROM CARS;");
-        model.addAttribute("adsCount", getNumberOfAds());
-        modelAndView.addObject("model",model);
-        modelAndView.setViewName("home");
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("adsCount", getNumberOfAds());
         return modelAndView;
     }
 
@@ -37,9 +34,6 @@ public class Home {
         Map<String, String> ads = new HashMap<>();
 
         try {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            Query query = entityManager.createNativeQuery("SELECT * FROM CARS");
             int cars = CarsEntity.getAllCars().size();
             ads.put("cars",cars+"");
             int furniture = FurnitureEntity.getAllFurnitures().size();

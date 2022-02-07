@@ -5,6 +5,7 @@ import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.MessageSource;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -132,7 +133,7 @@ public class AdsEntity extends ItemEntity{
             EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
             AdsEntity ad = AdsEntity.getEntityById(adId);
-            entityManager.remove(ad);
+            entityManager.remove(entityManager.contains(ad) ? ad : entityManager.merge(ad));
             transaction.commit();
             entityManager.close();
             entityManagerFactory.close();
@@ -338,4 +339,23 @@ public class AdsEntity extends ItemEntity{
             return remainingTime;
         }else {return "This Ad is not active yet, the Admins will activate it soon.";}
     }
+
+    public static List<AdsEntity> getAllAds()
+    {
+        List<AdsEntity> ads;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = entityManager.createNativeQuery("SELECT * FROM  ADS;", AdsEntity.class);
+            ads = (List<AdsEntity>) query.getResultList();
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+        return ads;
+    }
+
 }

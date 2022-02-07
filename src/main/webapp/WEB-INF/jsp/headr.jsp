@@ -28,7 +28,7 @@
         <div class="col-md-12">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/home"><spring:message code="main.page.label.website.home"/></a>
+                    <a class="nav-link active"  href="/home" ><spring:message code="main.page.label.website.home"/></a>
                 </li>
                 <c:if test="${user != null && user.isAdmin()}">
                     <li class="nav-item">

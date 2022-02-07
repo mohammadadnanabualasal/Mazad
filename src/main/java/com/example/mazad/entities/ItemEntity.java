@@ -179,6 +179,51 @@ public class ItemEntity {
         return entity;
     }
 
+    public static ItemEntity getEntityByAdId(int typeId, int adId){
+        ItemEntity entity = null;
+        try {
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mazad");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            Query query = null;
+            String tableName = "";
+            switch (typeId) {
+                case CarsEntity.adTypeId:
+                    tableName +="CARS";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where ad_id="+adId+";", CarsEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case ElectricalEntity.adTypeId:
+                    tableName +="ELECTRICALS";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where ad_id="+adId+";", ElectricalEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case FurnitureEntity.adTypeId:
+                    tableName +="FURNITURE";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where ad_id="+adId+";", FurnitureEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case RealEstatesEntity.adTypeId:
+                    tableName +="REAL_ESTATES";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where ad_id="+adId+";", RealEstatesEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+                case OtherEntity.adTypeId:
+                    tableName +="OTHER_ITEMS";
+                    query =  entityManager.createNativeQuery("SELECT * FROM "+tableName+" where ad_id="+adId+";", OtherEntity.class);
+                    entity = (ItemEntity) query.getResultList().get(0);
+                    break;
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            return null;
+        }
+        return entity;
+    }
+
+
     public boolean deleteEntity()
     {
         try {
